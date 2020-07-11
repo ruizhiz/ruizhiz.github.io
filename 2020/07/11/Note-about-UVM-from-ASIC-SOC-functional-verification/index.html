@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | Hexo</title>
+  <title>Note about UVM from ASIC SOC functional verification (Chapter 2) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="&#x3D;&#x3D;&#x3D;&#x3D; Chapter 2 Functyional Verification: Challenges and Solutions Functinal verification cycle include 4 phases: Development: verification plan, DV architecture, testbench, and tests development. Simu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Note about UVM from ASIC SOC functional verification (Chapter 2)">
+<meta property="og:url" content="http://yoursite.com/2020/07/11/Note-about-UVM-from-ASIC-SOC-functional-verification/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&#x3D;&#x3D;&#x3D;&#x3D; Chapter 2 Functyional Verification: Challenges and Solutions Functinal verification cycle include 4 phases: Development: verification plan, DV architecture, testbench, and tests development. Simu">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-11T18:36:27.000Z">
+<meta property="article:modified_time" content="2020-07-11T22:01:03.700Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,130 +154,190 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Note-about-UVM-from-ASIC-SOC-functional-verification" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Note about UVM from ASIC SOC functional verification (Chapter 2)
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/11/Note-about-UVM-from-ASIC-SOC-functional-verification/" class="archive-article-date">
+
+        
+        <a href="/2020/07/11/Note-about-UVM-from-ASIC-SOC-functional-verification/" class="archive-article-date">
   	<time datetime="2020-07-11T18:36:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/11/Note-about-UVM-from-ASIC-SOC-functional-verification/">Note about UVM from ASIC SOC functional verification (Chapter 2)</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>==== Chapter 2 Functyional Verification: Challenges and Solutions</p>
+<h3 id="Functinal-verification-cycle-include-4-phases"><a href="#Functinal-verification-cycle-include-4-phases" class="headerlink" title="Functinal verification cycle include 4 phases:"></a>Functinal verification cycle include 4 phases:</h3><ol>
+<li>Development: verification plan, DV architecture, testbench, and tests development.</li>
+<li>Simulation: software simulation, acceleration, emulation, etc.</li>
+<li>Debug: transaction level, signal level, etc. This will be a big component if you did not deploy assertions, for example.</li>
+<li>Cover: functional, code, and SVA coverage that feeds back to the development stage.</li>
+</ol>
+<hr>
+<h3 id="Reduce-Time-to-Develop"><a href="#Reduce-Time-to-Develop" class="headerlink" title="Reduce Time to Develop"></a>Reduce Time to Develop</h3><p>The test and testbench development are the most time consuming. To reduce time to develop, we need to:</p>
+<ol>
+<li>Raise abstraction level of tests. Use TLM(Transaction Level Modeling, TLM is more on the functionality of the data transfers - what data trnasferred to and from what locations - and less on their actual implementation) methodologies such as UVM, SystemVerilog/C++/DPI, etc. The higher the abstraction level, the easier it is to model and maintain verification logic. Modification and debug of transaction level logic is much easier, further reducing time to develop testbench, reference models (scoreboard), peripheral models, and other such verification logic.</li>
+<li>Use constrained random verification (CRV) methodologies to reach exhaustive coverage with fewer tests. CRV is discussed in detail in Chap. 5. Fewer tests mean less time to develop and debug.</li>
+<li>Develop verification components (e.g., UVM agents) that are reusable. Make them parameterized for adoptability in future projects. UVM is discussed in detail in Chap. 4.</li>
+<li>Use SystemVerilog Assertions (SVA) to reduce time to develop complex sequential and combinatorial checks. As we will see, assertions are intuitive and much simpler to model, especially for complex temporal domain checks. Verilog code for a given assertion will be much lengthier, hard to model, and hard to debug. SVA indeed reduces time to develop and debug. SVA is discussed in detail in Chap. 6.</li>
+</ol>
+<hr>
+<h3 id="Attentions-to-Issues"><a href="#Attentions-to-Issues" class="headerlink" title="Attentions to Issues"></a>Attentions to Issues</h3><p>The technology/tools available from EDA vendors allow an automated and coverage-driven verification plan development in an organized way. However, detailed attention still needs to be given to issues such as asynchronous FIFO, state transitions, live locks, dead locks, etc. Relaying only on end-to-end verification can miss corner cases.</p>
+<hr>
+<h3 id="Reduce-Time-to-Simulate"><a href="#Reduce-Time-to-Simulate" class="headerlink" title="Reduce Time to Simulate"></a>Reduce Time to Simulate</h3><ol>
+<li>Higher-level abstractions simulate much faster than pure RTL testbench which is modeled at signal level. Use transaction level testbench (e.g., UVM, TLM 2.0 transaction level models). TLM reduces time to develop, debug, and simulate. Electronic system level (i.e., TLM 2.0 level modeling) has come a long way for practical deployment in verification environments. Refer to Chap. 11 for complete detail on ESL and TLM 2.0 methodology.</li>
+<li>Deploy well-thought-out hardware acceleration, emulation, or FPGA prototype methodologies. Develop transaction level testbenches that interact directly with the accelerated or emulated design. Chapter 12 is devoted to deploying hardware acceleration, emulation, and virtual prototyping to speed up simulation as well as develop software.</li>
+<li>Use coverage-driven verification (CDV) methodologies to reduce the number of tests to simulate to reach the defined coverage goals. Refer to Chap. 7 on functional coverage to understand CDV.</li>
+</ol>
+<hr>
+<h3 id="Reduce-Time-to-Debug"><a href="#Reduce-Time-to-Debug" class="headerlink" title="Reduce Time to Debug"></a>Reduce Time to Debug</h3><ol>
+<li>Use SystemVerilog Assertion-based verification (ABV) methodology to quickly reach to the source of the bug. As we will see (Chap. 6), assertions are placed at various places in design to catch bugs where they occur. Traditional way of debug is at IO level. You detect the effect of a bug at primary output. You then trace back from primary output until you find the cause of the bug resulting in lengthy debug time. In contrast, an SVA points directly at the source of the failure (e.g., a FIFO overflow assertion will point directly to the FIFO overflow logic in RTL that failed) drastically reducing the debug effort.</li>
+<li>Use transaction level methodologies to reduce debugging effort (and not get bogged down into signal level granularity).</li>
+<li>Constrained random verification allows for fewer tests. They also narrow down the cone of logic to debug. CRV indeed reduces time to debug.</li>
+</ol>
+<hr>
+<h3 id="Reduce-Time-to-Cover-Check-How-Good-Is-Your-Testbench"><a href="#Reduce-Time-to-Cover-Check-How-Good-Is-Your-Testbench" class="headerlink" title="Reduce Time to Cover: Check How Good Is Your Testbench"></a>Reduce Time to Cover: Check How Good Is Your Testbench</h3><ol>
+<li>Use SystemVerilog functional coverage language to measure the intent of the design.</li>
+<li>Use cover feature of SystemVerilog Assertions to cover complex sequential domain specification of your design.</li>
+<li>Use code coverage to cover structural coverage. Structural coverage is quite different from functional coverage, sturctural coverage does ont verify the intent of the design. it simply sees that the code taht you have written has been exercised. But it’s still important.</li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/11/Note-about-UVM-from-ASIC-SOC-functional-verification/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/09/The-Difference-between-DRAM-and-Flash/" class="archive-article-date">
-  	<time datetime="2020-07-09T23:31:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/09/The-Difference-between-DRAM-and-Flash/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">The Difference between DRAM and Flash</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/09/The-Difference-between-DRAM-and-Flash/">The Difference between DRAM and Flash</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/06/first-blog/" class="archive-article-date">
-  	<time datetime="2020-07-06T15:04:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/06/first-blog/">first blog</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/06/hello-world/" class="archive-article-date">
-  	<time datetime="2020-07-06T14:57:24.694Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/06/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -296,8 +360,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

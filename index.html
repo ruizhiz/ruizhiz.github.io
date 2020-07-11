@@ -152,6 +152,103 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Note-about-UVM-from-ASIC-SOC-functional-verification" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/11/Note-about-UVM-from-ASIC-SOC-functional-verification/">Note about UVM from ASIC SOC functional verification (Chapter 2)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/11/Note-about-UVM-from-ASIC-SOC-functional-verification/" class="archive-article-date">
+  	<time datetime="2020-07-11T18:36:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>==== Chapter 2 Functyional Verification: Challenges and Solutions</p>
+<h3 id="Functinal-verification-cycle-include-4-phases"><a href="#Functinal-verification-cycle-include-4-phases" class="headerlink" title="Functinal verification cycle include 4 phases:"></a>Functinal verification cycle include 4 phases:</h3><ol>
+<li>Development: verification plan, DV architecture, testbench, and tests development.</li>
+<li>Simulation: software simulation, acceleration, emulation, etc.</li>
+<li>Debug: transaction level, signal level, etc. This will be a big component if you did not deploy assertions, for example.</li>
+<li>Cover: functional, code, and SVA coverage that feeds back to the development stage.</li>
+</ol>
+<hr>
+<h3 id="Reduce-Time-to-Develop"><a href="#Reduce-Time-to-Develop" class="headerlink" title="Reduce Time to Develop"></a>Reduce Time to Develop</h3><p>The test and testbench development are the most time consuming. To reduce time to develop, we need to:</p>
+<ol>
+<li>Raise abstraction level of tests. Use TLM(Transaction Level Modeling, TLM is more on the functionality of the data transfers - what data trnasferred to and from what locations - and less on their actual implementation) methodologies such as UVM, SystemVerilog/C++/DPI, etc. The higher the abstraction level, the easier it is to model and maintain verification logic. Modification and debug of transaction level logic is much easier, further reducing time to develop testbench, reference models (scoreboard), peripheral models, and other such verification logic.</li>
+<li>Use constrained random verification (CRV) methodologies to reach exhaustive coverage with fewer tests. CRV is discussed in detail in Chap. 5. Fewer tests mean less time to develop and debug.</li>
+<li>Develop verification components (e.g., UVM agents) that are reusable. Make them parameterized for adoptability in future projects. UVM is discussed in detail in Chap. 4.</li>
+<li>Use SystemVerilog Assertions (SVA) to reduce time to develop complex sequential and combinatorial checks. As we will see, assertions are intuitive and much simpler to model, especially for complex temporal domain checks. Verilog code for a given assertion will be much lengthier, hard to model, and hard to debug. SVA indeed reduces time to develop and debug. SVA is discussed in detail in Chap. 6.</li>
+</ol>
+<hr>
+<h3 id="Attentions-to-Issues"><a href="#Attentions-to-Issues" class="headerlink" title="Attentions to Issues"></a>Attentions to Issues</h3><p>The technology/tools available from EDA vendors allow an automated and coverage-driven verification plan development in an organized way. However, detailed attention still needs to be given to issues such as asynchronous FIFO, state transitions, live locks, dead locks, etc. Relaying only on end-to-end verification can miss corner cases.</p>
+<hr>
+<h3 id="Reduce-Time-to-Simulate"><a href="#Reduce-Time-to-Simulate" class="headerlink" title="Reduce Time to Simulate"></a>Reduce Time to Simulate</h3><ol>
+<li>Higher-level abstractions simulate much faster than pure RTL testbench which is modeled at signal level. Use transaction level testbench (e.g., UVM, TLM 2.0 transaction level models). TLM reduces time to develop, debug, and simulate. Electronic system level (i.e., TLM 2.0 level modeling) has come a long way for practical deployment in verification environments. Refer to Chap. 11 for complete detail on ESL and TLM 2.0 methodology.</li>
+<li>Deploy well-thought-out hardware acceleration, emulation, or FPGA prototype methodologies. Develop transaction level testbenches that interact directly with the accelerated or emulated design. Chapter 12 is devoted to deploying hardware acceleration, emulation, and virtual prototyping to speed up simulation as well as develop software.</li>
+<li>Use coverage-driven verification (CDV) methodologies to reduce the number of tests to simulate to reach the defined coverage goals. Refer to Chap. 7 on functional coverage to understand CDV.</li>
+</ol>
+<hr>
+<h3 id="Reduce-Time-to-Debug"><a href="#Reduce-Time-to-Debug" class="headerlink" title="Reduce Time to Debug"></a>Reduce Time to Debug</h3><ol>
+<li>Use SystemVerilog Assertion-based verification (ABV) methodology to quickly reach to the source of the bug. As we will see (Chap. 6), assertions are placed at various places in design to catch bugs where they occur. Traditional way of debug is at IO level. You detect the effect of a bug at primary output. You then trace back from primary output until you find the cause of the bug resulting in lengthy debug time. In contrast, an SVA points directly at the source of the failure (e.g., a FIFO overflow assertion will point directly to the FIFO overflow logic in RTL that failed) drastically reducing the debug effort.</li>
+<li>Use transaction level methodologies to reduce debugging effort (and not get bogged down into signal level granularity).</li>
+<li>Constrained random verification allows for fewer tests. They also narrow down the cone of logic to debug. CRV indeed reduces time to debug.</li>
+</ol>
+<hr>
+<h3 id="Reduce-Time-to-Cover-Check-How-Good-Is-Your-Testbench"><a href="#Reduce-Time-to-Cover-Check-How-Good-Is-Your-Testbench" class="headerlink" title="Reduce Time to Cover: Check How Good Is Your Testbench"></a>Reduce Time to Cover: Check How Good Is Your Testbench</h3><ol>
+<li>Use SystemVerilog functional coverage language to measure the intent of the design.</li>
+<li>Use cover feature of SystemVerilog Assertions to cover complex sequential domain specification of your design.</li>
+<li>Use code coverage to cover structural coverage. Structural coverage is quite different from functional coverage, sturctural coverage does ont verify the intent of the design. it simply sees that the code taht you have written has been exercised. But it’s still important.</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/11/Note-about-UVM-from-ASIC-SOC-functional-verification/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-The-Difference-between-DRAM-and-Flash" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
