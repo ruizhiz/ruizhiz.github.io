@@ -152,6 +152,287 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Note-Chapter-6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/12/Note-Chapter-6/">Note Chapter 6 SystemVerilog Assertion (SVA)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/12/Note-Chapter-6/" class="archive-article-date">
+  	<time datetime="2020-07-12T21:55:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Note: the following note is from “ASIC SOC Functional Design Verification”</p>
+<p>SVA is instrumental in finding corner cases, ease of debug, and coverage of design’s sequential logic.<br>Some of the most useful places to place assertions are FIFOs (especitally the asynchronous variety), counters, block-to-block interface, block-to-IO interface, state machines, etc.<br>Coverage includes three components:<br>  1). code coverage (which is structural) which needs to be 100%.<br>  2). functional coverage that needs to be designed to cover functionality (i.e., intent) of the entire design and must completely cover the design specification.<br>  3) sequential domain coverage (using SVA “cover” feature) which </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/12/Note-Chapter-6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Note-Chapter-5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/11/Note-Chapter-5/">Note: Chapter 5 Constrained Random Verification</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/11/Note-Chapter-5/" class="archive-article-date">
+  	<time datetime="2020-07-12T03:48:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Note: the following Note is from “ASIC SOC Functional Verification”<br><img src="/images/CRV.jpg" alt=""><br>Fig 5.2 Constrained random verification methodology</p>
+<hr>
+<h3 id="Basics-of-CRV"><a href="#Basics-of-CRV" class="headerlink" title="Basics of CRV"></a>Basics of CRV</h3><p>Note the following rules that apply to randomize():</p>
+<ol>
+<li>Random variables declared as static are shared by all instances of the class in which they are declared. Each time the randomize() method is called, the variable is changed in every class instance.</li>
+<li>If randomize() fails, the constraints are infeasible, and the random variables retain their previous values, and post_randomize() is not called.</li>
+<li>randomize() is built-in and cannot be overidden. </li>
+<li>The built-in methods pre_randomize() and post_randomize() are funcitons and cannot block.</li>
+</ol>
+<p>Semantics of randc variables will be solved before other random variables.</p>
+<hr>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/11/Note-Chapter-5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Note-Chapter-4-UVM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/11/Note-Chapter-4-UVM/">Note: Chapter 4 UVM</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/11/Note-Chapter-4-UVM/" class="archive-article-date">
+  	<time datetime="2020-07-12T01:46:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The follwing Note is come from book “ASIC SOC Functional Design Verification”</p>
+<h3 id="The-components-that-are-generic-and-can-be-reused"><a href="#The-components-that-are-generic-and-can-be-reused" class="headerlink" title="The components that are generic and can be reused"></a>The components that are generic and can be reused</h3><ol>
+<li>Agent sequencer</li>
+<li>TLM FIFO</li>
+<li>Consumer</li>
+<li>Entire transaction-level communication mechanism</li>
+<li>All “class” interfaces</li>
+<li>The overall architecture of the entire verification environment</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/11/Note-Chapter-4-UVM/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Note-chapter3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/11/Note-chapter3/">Chapter 3 SystemVerilog Paradigm</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/11/Note-chapter3/" class="archive-article-date">
+  	<time datetime="2020-07-11T22:04:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The following note is from ASIC SOC Functional Design Verification (Chapter 3)</p>
+<h3 id="SystemVerilog-Language-Umbrella"><a href="#SystemVerilog-Language-Umbrella" class="headerlink" title="SystemVerilog Language Umbrella"></a>SystemVerilog Language Umbrella</h3><p>SystemVerilog is not a monolithic language. It has the following components:</p>
+<ol>
+<li>SystemVerilog Object-Oriented Language for functional verification. This is the subset that transaction-level methodology such as UVM uses.</li>
+<li>SystemVerilog for Design. (knowledge of OOP language subset is not required here)</li>
+<li>SystemVerilog Assertions (SVA) language.</li>
+<li>SystemVerilog Functional Coverage (FC) language.<br>Note: SystemVerilog, SystemVerilog Assertions(SVA), and SystemVerilog Functional Coverage(SFC) are three totally orthogonal languages.<br>In any design, there are three main components of verification: </li>
+<li>stimulus generators to stimulate the design.</li>
+<li>response checkers to see that the device adheres to the device specifications. </li>
+<li>coverage components to see that we have indeed structurally and functinally covered everything in the DUT per the device specifications.</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/11/Note-chapter3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Note-about-UVM-from-ASIC-SOC-functional-verification" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -207,6 +488,7 @@
 <li>Use cover feature of SystemVerilog Assertions to cover complex sequential domain specification of your design.</li>
 <li>Use code coverage to cover structural coverage. Structural coverage is quite different from functional coverage, sturctural coverage does ont verify the intent of the design. it simply sees that the code taht you have written has been exercised. But it’s still important.</li>
 </ol>
+<hr>
 
       
 
