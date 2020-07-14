@@ -15,10 +15,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Note: the following note is from “ASIC SOC Functional Design Verification” SVA is instrumental in finding corner cases, ease of debug, and coverage of design’s sequential logic.Some of the most useful">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/Fig_6_13.jpg">
+<meta property="og:image" content="http://yoursite.com/images/Fig_6_32.png">
+<meta property="og:image" content="http://yoursite.com/images/Fig_6_33.png">
 <meta property="article:published_time" content="2020-07-12T21:55:18.000Z">
-<meta property="article:modified_time" content="2020-07-13T15:41:27.644Z">
+<meta property="article:modified_time" content="2020-07-14T21:29:47.621Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/Fig_6_13.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -175,7 +179,94 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Note: the following note is from “ASIC SOC Functional Design Verification”</p>
-<p>SVA is instrumental in finding corner cases, ease of debug, and coverage of design’s sequential logic.<br>Some of the most useful places to place assertions are FIFOs (especitally the asynchronous variety), counters, block-to-block interface, block-to-IO interface, state machines, etc.<br>Coverage includes three components:<br>  1). code coverage (which is structural) which needs to be 100%.<br>  2). functional coverage that needs to be designed to cover functionality (i.e., intent) of the entire design and must completely cover the design specification.<br>  3) sequential domain coverage (using SVA “cover” feature) which </p>
+<p>SVA is instrumental in finding corner cases, ease of debug, and coverage of design’s sequential logic.<br>Some of the most useful places to place assertions are FIFOs (especitally the asynchronous variety), counters, block-to-block interface, block-to-IO interface, state machines, etc.<br>Coverage includes three components:<br>  1). code coverage (which is structural) which needs to be 100%.<br>  2). functional coverage that needs to be designed to cover functionality (i.e., intent) of the entire design and must completely cover the design specification.<br>  3) sequential domain coverage (using SVA “cover” feature) which needs to be carefully designed to fully cover all required sequential domain conditions fo the design.</p>
+<hr>
+<h3 id="How-Do-I-know-I-Have-Enough-Assertions"><a href="#How-Do-I-know-I-Have-Enough-Assertions" class="headerlink" title="How Do I know I Have Enough Assertions?"></a>How Do I know I Have Enough Assertions?</h3><ol>
+<li>It’s the “Test plan”. Review and re-review your test plan against the design specs. Make sure you have added assertions for every “critical” function that you must guarantee works.</li>
+<li>If tests keep failing but assertions do not fire, you do not have enough assertions. </li>
+<li>“Formal” tool’s ability to handle assertions. ??</li>
+</ol>
+<hr>
+<h3 id="Immediate-Assertions"><a href="#Immediate-Assertions" class="headerlink" title="Immediate Assertions"></a>Immediate Assertions</h3><p>The immediate assertions can be preceded by a level-sensitive or an edge-sensitive statement. While the concurrent assertions can only work in a “sampling/clock edge”-sensitive logic and not level-sensitive logic.<br>The immediate assertions will be computed, and results will be available at the same time that the assertion was fired.<br>From syntax point of view, an immediate assertion uses only “assert” as the keyword in constrast to a concurrent assertion that requires “assert property”.<br><strong><em>One key difference between immediate and concurrent assertions is that concurrent assertions always work off the sampled value in preponed region of a simulation tick, while immediate assertions work immediately when they are executed (as any combinatorial expression in a procedural block) and do not evaluate its expression in the preponed region.</em></strong><br>Note: For example, in concurrent assertions, if we have cStart, cStart change from 0 to 1 and posedge clk changed at the same time, the sampled value of cStart in the “preponed region” will be equal to “zero” and not “one”.<br>The immediate assertion may get evaluated multiple times before the expression variable values “settle” down. Therefore, immediate assertions are also known to be “glitch” prone.</p>
+<hr>
+<h3 id="Concurrent-Assertion"><a href="#Concurrent-Assertion" class="headerlink" title="Concurrent Assertion"></a>Concurrent Assertion</h3><p>Concurrent assertions are the gist of SVA language and they execute in parallel with the rest of the design logic and are multi-threaded. </p>
+<hr>
+<h3 id="Clocking-Basic"><a href="#Clocking-Basic" class="headerlink" title="Clocking Basic"></a>Clocking Basic</h3><p><img src="/images/Fig_6_13.jpg" alt=""><br><em>Fig.6.13 Assertion sampling edge and simulation time tick phases</em></p>
+<p>The variables used in assertions include property, sequence and expression.<br>Note: preponed region is a precursor to the time slot, where only sampling of the data values take place. No value changes or events occur in this region. And sampled values of signals do not change through the time slot.</p>
+<hr>
+<h3 id="Binding-Properties"><a href="#Binding-Properties" class="headerlink" title="Binding Properties"></a>Binding Properties</h3><p>“bind” allows us to keep design logic separate from the assertion logic.<br>Both input/output and internal signals of designModule can be binded with propertyModule.</p>
+<hr>
+<h3 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h3><table>
+<thead>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">##m ##[m:n]</td>
+<td align="left">Clock delay</td>
+</tr>
+<tr>
+<td align="left">[*m] [*m:n]</td>
+<td align="left">Repetition – Consecutive</td>
+</tr>
+<tr>
+<td align="left">[=m] [=m:n]</td>
+<td align="left">Repetition – Non-consecutive</td>
+</tr>
+<tr>
+<td align="left">[-&gt;m] [-&gt; m:n]</td>
+<td align="left">GoTo Repetition – Non-consecutive</td>
+</tr>
+<tr>
+<td align="left">sig1 throughout seq1</td>
+<td align="left">Signal sig1 must be true throughout sequence seq1</td>
+</tr>
+<tr>
+<td align="left">seq1 within seq2</td>
+<td align="left">sequence seq1 must be contained within sequence s2</td>
+</tr>
+<tr>
+<td align="left">seq1 and seq2</td>
+<td align="left">‘and’ of two sequences. Both sequences <strong>must</strong> start at the same time but may end at different times</td>
+</tr>
+<tr>
+<td align="left">seq1 or seq2</td>
+<td align="left">‘or’ of two sequences. It succeeds if either sequence succeeds</td>
+</tr>
+<tr>
+<td align="left">first_match complex_seq1</td>
+<td align="left">matches only the first of possibly multiple matches</td>
+</tr>
+<tr>
+<td align="left">not &lt;property_expr&gt;</td>
+<td align="left">if &lt;property_expr&gt; evaluates to true, then not &lt;property_expr&gt; evaluates to false; and vice-versa.</td>
+</tr>
+<tr>
+<td align="left">if(expression) property_expr1 else property_expr2</td>
+<td align="left">if…else within a property</td>
+</tr>
+<tr>
+<td align="left">|-&gt;</td>
+<td align="left">Overlapping implication operator</td>
+</tr>
+<tr>
+<td align="left">|=&gt;</td>
+<td align="left">Non-overlapping implication operator</td>
+</tr>
+</tbody></table>
+<p><em>Fig.6.17 Operator–concurrent assertions</em></p>
+<p>Note: in [m:n], m and n need to be constants. They cannot be variable.<br>For [=m], b[=m] ##1 c; means that signal ‘b’ must be true on ‘m’ non-consecutive clock and ‘c’ needs to match after any number of clocks -after- at least one clock after the last match of ‘b’.<br>So, ‘c’ can occurs after any # of clks after one clock after the last ‘b’ - as long as - no other ‘b’ occurs while we are waiting for ‘c’.<br>For [-&gt;2], b[-&gt;2] ##1 c; means that signal ‘b’ must be true on 2 clocks, not necessarily consecutive and ‘c’ <strong><em>must</em></strong> be asserted exactly 1 clock after the “last iterative” match of ‘b’.<br>That’s the difference between [-&gt;m] and [=m].<br>For <em>throughout</em>, the LHS of <em>throughout</em> operator can only be a signal or expression, but it cannot be a sequence. The RHS of <em>throughout</em> can be a sequence.<br>For <em>within</em>, the main difference between <em>within</em> and <em>throughout</em> is <em>within</em> allows sequence on both the LHS and RHS of the operator. And, the start point of seq1 cannot earlier than the start point of the seq2. The end point of seq1 cannot be later than the end point of seq2.<br>For <em>and</em>, note that both the seq must start at the same time, but do not need to end at the same time.<br>the <em>and</em> operator is very useful when you want to make sure that certain concurrent operations in your design start at the same time and that they both complete/match satisfactorily.<br>For <em>intersect</em>, <em>seq1 intersect seq2</em> match if:</p>
+<ul>
+<li>Both sequences start at the same time.</li>
+<li>Both sequences must match.</li>
+<li>Both sequences must END ath the same time.<br>The main difference between <em>and</em> and <em>intersect</em> is the requirement on the length of the two sequences. For <em>and</em>, they do not need to end at the same time.</li>
+</ul>
+<hr>
+<h3 id="Local-Variables"><a href="#Local-Variables" class="headerlink" title="Local Variables"></a>Local Variables</h3><p>The local variables are local to a sequence and are not visible or available to other sequences or properties.<br><img src="/images/Fig_6_32.png" alt=""><br><em>Fig.6.32 Local variables – basics</em><br><img src="/images/Fig_6_33.png" alt=""><br><em>Fig.6.33 Local variables – do’s and don’ts</em><br><strong>Note: the local variable must be attached to an expression, while comparison cannot be attached to an expression.</strong></p>
+<hr>
+<h3 id="SystemVerilog-Assertions-Applications"><a href="#SystemVerilog-Assertions-Applications" class="headerlink" title="SystemVerilog Assertions: Applications"></a>SystemVerilog Assertions: Applications</h3><p>##[*] is used as an equivalent representation of ##[0:$]<br>##[+] is used as an equivalent representation of ##[1:$]<br><em>Note: ‘$’ can be very useful when in a complex sequence you do not really know when a certain signal/sequence will follow anther sequence but you do need to make sure that it does occur.</em><br>use edge-sensitive-sampled value functions whenever posible. Level-sensitive antecedent can fork off unintended multiple threads affecting simulation performance.</p>
 
       
 
