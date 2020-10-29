@@ -152,6 +152,236 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pygame-做点可视化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/28/pygame-%E5%81%9A%E7%82%B9%E5%8F%AF%E8%A7%86%E5%8C%96/">pygame 做点可视化</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/28/pygame-%E5%81%9A%E7%82%B9%E5%8F%AF%E8%A7%86%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2020-10-29T02:27:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/28/pygame-%E5%81%9A%E7%82%B9%E5%8F%AF%E8%A7%86%E5%8C%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-fancy-method-in-Leetcode" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/14/fancy-method-in-Leetcode/">fancy method in Leetcode (Python3)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/14/fancy-method-in-Leetcode/" class="archive-article-date">
+  	<time datetime="2020-10-15T03:20:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-reverse-string"><a href="#1-reverse-string" class="headerlink" title="1. reverse string"></a>1. reverse string</h3><p>for something string like number, sometimes we want to read from LSB, so, we need to reversed read them:</p>
+<figure class="highlight python"><figcaption><span>reverse string</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> n1 <span class="keyword">in</span> reversed(num1):</span><br><span class="line">    tempPos = pos</span><br><span class="line">    <span class="keyword">for</span> n2 <span class="keyword">in</span> reversed(num2):</span><br><span class="line">        product[tempPos] += int(n1) * int(n2)</span><br><span class="line">        product[tempPos<span class="number">-1</span>] += product[tempPos]/<span class="number">10</span></span><br><span class="line">        product[tempPos] %= <span class="number">10</span></span><br><span class="line">        tempPos -= <span class="number">1</span></span><br><span class="line">    pos -= <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-unpack-the-arguments-out-of-a-list-or-tuple"><a href="#2-unpack-the-arguments-out-of-a-list-or-tuple" class="headerlink" title="2. unpack the arguments out of a list or tuple:"></a>2. unpack the arguments out of a list or tuple:</h3><p> write the function call with the * operator to unpack the arguments out of a list or tuple:<br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(range(<span class="number">3</span>, <span class="number">6</span>))            <span class="comment"># normal call with separate arguments</span></span><br><span class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>args = [<span class="number">3</span>, <span class="number">6</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(range(*args))            <span class="comment"># call with arguments unpacked from a list</span></span><br><span class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-sort-a-string-by-key"><a href="#3-sort-a-string-by-key" class="headerlink" title="3. sort a string by key"></a>3. sort a string by key</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>student_tuples = [</span><br><span class="line"><span class="meta">... </span>    (<span class="string">'john'</span>, <span class="string">'A'</span>, <span class="number">15</span>),</span><br><span class="line"><span class="meta">... </span>    (<span class="string">'jane'</span>, <span class="string">'B'</span>, <span class="number">12</span>),</span><br><span class="line"><span class="meta">... </span>    (<span class="string">'dave'</span>, <span class="string">'B'</span>, <span class="number">10</span>),</span><br><span class="line"><span class="meta">... </span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(student_tuples, key=<span class="keyword">lambda</span> student: student[<span class="number">2</span>])   <span class="comment"># sort by age</span></span><br><span class="line">[(<span class="string">'dave'</span>, <span class="string">'B'</span>, <span class="number">10</span>), (<span class="string">'jane'</span>, <span class="string">'B'</span>, <span class="number">12</span>), (<span class="string">'john'</span>, <span class="string">'A'</span>, <span class="number">15</span>)]</span><br></pre></td></tr></table></figure>
+<h3 id="4-remove-first-one-and-last-one-char-in-string"><a href="#4-remove-first-one-and-last-one-char-in-string" class="headerlink" title="4. remove first one and last one char in string"></a>4. remove first one and last one char in string</h3><p>Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together. You may assume the given string consists of lowercase English letters only and its length will not exceed 10000.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">repeatedSubstringPattern</span><span class="params">(self, s)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type str: str</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        ss = (s + s)[<span class="number">1</span>:<span class="number">-1</span>]  <span class="comment">#remove first and last char in string</span></span><br><span class="line">        <span class="keyword">return</span> ss.find(s) != <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-string-is-upcase-or-lowcase-or-title"><a href="#5-string-is-upcase-or-lowcase-or-title" class="headerlink" title="5. string is upcase or lowcase or title"></a>5. string is upcase or lowcase or title</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detectCapitalUse</span><span class="params">(self, word)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> word.isupper() <span class="keyword">or</span> word.islower() <span class="keyword">or</span> word.istitle()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/14/fancy-method-in-Leetcode/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-basic-knowledge-about-perl" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/03/basic-knowledge-about-perl/">basic knowledge about perl</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/03/basic-knowledge-about-perl/" class="archive-article-date">
+  	<time datetime="2020-08-03T16:39:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="basic-function-and-keyword"><a href="#basic-function-and-keyword" class="headerlink" title="basic function and keyword"></a>basic function and keyword</h3><h5 id="use"><a href="#use" class="headerlink" title="use"></a>use</h5><p>use is kinds like #include&lt;&gt;</p>
+<p>use feature ‘say’;<br>use v5.16;</p>
+<h5 id="say"><a href="#say" class="headerlink" title="say"></a>say</h5><p>say “5+4 = “, 5 + 4; <em># 5+4 = 9</em><br>say “5 - 4 = “, 5 - 4;<br>say “ EXP 1 = “, exp 1;<br>say “HEX 10 = “, hex 10; <em>#16</em><br>say “OCT 10 = “, oct 10; <em>#8</em><br>say “INT 6.45 = “, int(6.45);<br>say “LOG 2 = “, log 2;<br>say “Random between 0 - 10 = “, int(rand 11);<br>say “SQRT 9 = “, sqrt 9;</p>
+<h5 id="eq-ne-lt-le"><a href="#eq-ne-lt-le" class="headerlink" title="eq ne lt le"></a>eq ne lt le</h5><p>if(‘a’ eq ‘b’){ <em>#equal to</em><br>}<br>ne <em>#not equal to</em><br>lt <em>#less than</em><br>le <em>#less than equal to</em><br>gt <em>#great than</em><br>ge <em>#great equal to</em></p>
+<h5 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h5><h6 id="while"><a href="#while" class="headerlink" title="while"></a>while</h6><p>my $i = 1;<br>while($i &lt;10){<br> if($i %2 == 0){<br>   $i++;</p>
+<p>   next;    <em>#similar to continue</em><br>  }<br>  if($i == 7){last;} <em>#last is similar to break</em><br>}</p>
+<h5 id="STDIN"><a href="#STDIN" class="headerlink" title="STDIN"></a>STDIN</h5><p>my $guess = <STDIN>;</p>
+<h5 id="FILE"><a href="#FILE" class="headerlink" title="FILE"></a>FILE</h5><p>my $emp_file = “employees.txt”;<br>open my $fh, ‘&lt;’, $emp_file <em># fh is file handler, &lt; means readonly</em><br>  or die “Can’t open File : $<em>“ *# $</em> is going to provide error message*</p>
+<p>while(my $info = &lt;$fh&gt;){<br>  chomp(%info);<br>  my ($emp_name, $job, $id) = split /:/, $info;<br>}<br>close $fh or die “Couldn’t Close File : $_”;</p>
+<hr>
+<h3 id="sub"><a href="#sub" class="headerlink" title="sub"></a>sub</h3><p>sub is similar with function,</p>
+<p>sub get_random {<br>  return int(rand 11);<br>}</p>
+<p>sub get_random_max {<br> my ($max_num) = @_; <em>#get argument from outside</em><br> $max_num ||= 11;<br> return int(rand $max_num);<br>}<br>say “random Number “, get_random_max(100);</p>
+<p>sub get_num {<br>  my($num_1, $num_2) = @_; <em>#first argument go to num_1, second go to 2</em><br>  return $num_1 + $num_2;<br>}</p>
+<hr>
+<h3 id="data-type"><a href="#data-type" class="headerlink" title="data type"></a>data type</h3><p>There are three data types: scalars, array and hashs.</p>
+<h5 id="scalars"><a href="#scalars" class="headerlink" title="scalars"></a>scalars</h5><p>my $name = ‘Ruizhi’;<br>my($age, $street) = (40, ‘123 Main St’); <em>#assign 40 to age, assign ‘123 Main St’ to street’</em><br>my $my_info = “$name live on &quot;$street&quot;\n”;</p>
+<p>Note: ‘’ cannot use variable inside. while “” can. </p>
+<p>$my_info = qq{$name lives on “$street”\n} <em>#to replace double quotes. q can replace single quote. it can work same as the above line.</em><br>my $bunch_on_info = &lt;&lt;”END”; <em>#this place defines the simbol which going to stop the long string.</em><br>This is a<br>bunch of information<br>on multiple lines<br>END<br>say $bunch_on_info;<br><em>#The print out will be:<br>#This is a<br>#bunch of information<br>#on multiple lines</em></p>
+<p>my $big_int = 18446744073709551615;<br><em>#%c : Character<br>#%s: string<br>#$d: Decimal<br>#%u: Unsigned integer<br>#%f: floating point (Decimal Notation)<br>#%e: floating point (Scientific Notation)</em><br>printf(“%u \n”, %big_int + 1);<br>my$big_float = .100000000000001;<br>printf(“%.16f \n”, $big_float); <em>#.16 means 16 digits of precision.</em></p>
+<p>my $first = 1;<br>my $second = 2;</p>
+<p>($first, $second) = ($second, $first); <em>#this could switch the data between $first and $second</em><br>say “$first $second”;</p>
+<h6 id="string"><a href="#string" class="headerlink" title="string"></a>string</h6><p>my $long_string = “Random Long String”;<br>say “Length of String “, length $long_string; <em>#lengh return the length of string</em><br>printf(“Long is at %d \n”, index $long_string, “Long”); <em>#index is used to search for the address of Long in $long_string</em><br>printf(“Last g is at %d \n”, rindex $long_string, “g”); <em># rindex finds the last g</em><br>$long_string = $long_string.’isn&#39;t that long’; <em># join strings</em><br>say “Index 7 through 10 “,  substr $long_string, 7, 4; <em>#get the substr of $long_string, from index 7, length is 4</em></p>
+<p>printf(“Uppercase : %s \n”, uc $long_string);<br>printf(“Lowercase : %s \n”, lc $long_string);<br>printf(“1st Uppercase : %s \n”, ucfirst $long_string);</p>
+<p>my $two_times = “what is” * 2; <em># double this</em></p>
+<p>my $letter = ‘c’;<br>say “Next Letter “, ++$letter; <em>#the output is d</em></p>
+<h5 id="array"><a href="#array" class="headerlink" title="array"></a>array</h5><p>my @abcs = (‘a’ .. ‘z’); <em>#@abcs contains a to z</em><br>print join(“, “, @abcs), “\n”; <em>#print @abcs as a string by join several elements with “, “</em></p>
+<p>my @my_info = (“ruizhi”, “123 Main St”, 40, 6.25);<br>$my_info[4] = “Banas”; <em>#add a new element</em><br>for my $info (@my_info) {<br>  say $info;<br>}<br>foreach my $num (@primes){<br>  say $num;<br>}<br>for(@my_info) {<br>  say $<em>;<br>}<br>Note: $</em> it is similar to auto item.<br>my @my_name = @my_info[0, 4]; *#it joins element 0 and 4 in my_info *<br>my($f_name, $address, $how_old, $height, $l_name) = @my_info;</p>
+<h5 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h5><p>my %employees = (“Sue” =&gt; 35, “Paul” =&gt; 43, “Sam” =&gt; 39);<br>printf(“Sue is %d \n”, $employees{Sue});</p>
+<p>$employees{Frank} = 44;<br>while (my($k, $v) = each %employees) {print “$k $v\n”} <em>#this sentence is used to printf all element in employees</em><br>my @ages = @employees{“Sue”, “Sam”}; <em>#store 35, 39 into ages</em></p>
+<p>for my $key (keys %employees){<br>  if($employees{$key} == 35){<br>    say “Hi Sue”;<br>  }<br>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/03/basic-knowledge-about-perl/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Note-Chapter-6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -748,81 +978,10 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/06/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/06/hello-world/" class="archive-article-date">
-  	<time datetime="2020-07-06T14:57:24.694Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/06/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
