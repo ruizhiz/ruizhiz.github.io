@@ -8,13 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>pygame 做点可视化 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="1. assertpython’s assert statement helps you find bugs more quickly and with less pain. 2. isinstanceReturns a Boolean stating whether the object is an instance or subclass of another object. 123456Sy">
+<meta property="og:type" content="article">
 <meta property="og:title" content="pygame 做点可视化">
 <meta property="og:url" content="http://yoursite.com/2020/10/28/pygame-%E5%81%9A%E7%82%B9%E5%8F%AF%E8%A7%86%E5%8C%96/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. assertpython’s assert statement helps you find bugs more quickly and with less pain. 2. isinstanceReturns a Boolean stating whether the object is an instance or subclass of another object. 123456Sy">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-10-29T02:27:08.000Z">
-<meta property="article:modified_time" content="2020-10-29T02:27:08.981Z">
+<meta property="article:modified_time" content="2020-11-01T03:46:48.535Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -172,7 +174,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h5 id="1-assert"><a href="#1-assert" class="headerlink" title="1. assert"></a>1. assert</h5><p>python’s assert statement helps you find bugs more quickly and with less pain.</p>
+<h5 id="2-isinstance"><a href="#2-isinstance" class="headerlink" title="2. isinstance"></a>2. isinstance</h5><p>Returns a Boolean stating whether the object is an instance or subclass of another object.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Syntax</span><br><span class="line">isinstance (object, classinfo)</span><br><span class="line">object</span><br><span class="line">Required. An object instance.</span><br><span class="line">classinfo</span><br><span class="line">Required. A class, type or a tuple containing classes, types or other tuples.</span><br></pre></td></tr></table></figure>
+<h5 id="3-pygame-init"><a href="#3-pygame-init" class="headerlink" title="3. pygame.init()"></a>3. pygame.init()</h5><p>initialize all imported pygame modules.  No exceptions will be raised if a module fails, but the total number if successful and failed inits will be returned as a tuple. You can always initialize individual modules manually, but pygame.init()initialize all imported pygame modules is a convenient way to get everything started. The init() functions for individual modules will raise exceptions when they fail.</p>
+<h5 id="4-pygame-time"><a href="#4-pygame-time" class="headerlink" title="4. pygame.time"></a>4. pygame.time</h5><p>why time is so important?<br>you need time to create motion, play sound, react to events in other words to make games. </p>
+<p>In computers generally we don’t count seconds we counts ticks. One tick can be 0.1 0.01 or 0.001 of second but those ticks are not for you! </p>
+<h6 id="pygame-time-Clock"><a href="#pygame-time-Clock" class="headerlink" title="pygame.time.Clock"></a>pygame.time.Clock</h6><p>This is a class that will help us to track amount of time or to manage framerate.</p>
+<h5 id="5-pygame-image"><a href="#5-pygame-image" class="headerlink" title="5. pygame image"></a>5. pygame image</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">game_img_used = pygame.image.load(GetImagePath(cfg.PICTURE_ROOT_DIR))</span><br><span class="line">game_img_used = pygame.transform.scale(game_img_used, cfg.SCREENSIZE)</span><br></pre></td></tr></table></figure>
+<p>pygame.image.load -&gt; load new image from a file.<br>pygame.transform.scale() -&gt; resize to new resolution</p>
+<h5 id="6-get-rect"><a href="#6-get-rect" class="headerlink" title="6.get_rect"></a>6.get_rect</h5><p>First images/pygame.Surfaces don’t have a position, so you have to store the position in the rect. When you call the get_rect method of a pygame.Surface, Pygame create a new rect with the size of the image and the x, y coordinates (0, 0). </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">game_img_used = pygame.image.load(GetImagePath(cfg.PICTURE_ROOT_DIR))</span><br><span class="line">game_img_used = pygame.transform.scale(game_img_used, cfg.SCREENSIZE)</span><br><span class="line">game_img_used_rect = game_img_used.get_rect()</span><br></pre></td></tr></table></figure>
+<h5 id="7-pygame-display"><a href="#7-pygame-display" class="headerlink" title="7. pygame.display"></a>7. pygame.display</h5><p>pygame.display.set_mode -&gt; initialize a window or screen for display<br>pygame.display.set_caption -&gt; caption == 标题</p>
+<h5 id="8-render"><a href="#8-render" class="headerlink" title="8. render()"></a>8. render()</h5><p>render() -&gt;  draw text on a new Surface<br>    render(text, antialias, color, background=None)<br>antialias -&gt; it is a boolean, if true, the characters will have smooth edges.</p>
+
       
 
       
