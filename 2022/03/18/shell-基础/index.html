@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>shell_基础 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1. shell概述shell 是一个命令行解释器，它接收应用程序&#x2F;用户命令，然后调用操作系统内核。 2. shell 脚本入门1.脚本格式脚本以#!&#x2F;bin&#x2F;bash 开头(指定解析器)。也可以不写。 2.第一个脚本 hello world12#!&#x2F;bin&#x2F;bashecho &quot;hello world&quot;  3. 第二个脚本： 多命令处理下面的代码是在父目录下创建Rui">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell_基础">
+<meta property="og:url" content="http://example.com/2022/03/18/shell-%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. shell概述shell 是一个命令行解释器，它接收应用程序&#x2F;用户命令，然后调用操作系统内核。 2. shell 脚本入门1.脚本格式脚本以#!&#x2F;bin&#x2F;bash 开头(指定解析器)。也可以不写。 2.第一个脚本 hello world12#!&#x2F;bin&#x2F;bashecho &quot;hello world&quot;  3. 第二个脚本： 多命令处理下面的代码是在父目录下创建Rui">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-19T04:48:10.000Z">
+<meta property="article:modified_time" content="2022-03-19T05:06:44.552Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-shell-基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/18/shell-%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2022-03-19T04:48:10.000Z" itemprop="datePublished">2022-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      shell_基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-shell概述"><a href="#1-shell概述" class="headerlink" title="1. shell概述"></a>1. shell概述</h2><p>shell 是一个命令行解释器，它接收应用程序&#x2F;用户命令，然后调用操作系统内核。</p>
+<h2 id="2-shell-脚本入门"><a href="#2-shell-脚本入门" class="headerlink" title="2. shell 脚本入门"></a>2. shell 脚本入门</h2><h4 id="1-脚本格式"><a href="#1-脚本格式" class="headerlink" title="1.脚本格式"></a>1.脚本格式</h4><p>脚本以<code>#!/bin/bash</code> 开头(指定解析器)。也可以不写。</p>
+<h4 id="2-第一个脚本-hello-world"><a href="#2-第一个脚本-hello-world" class="headerlink" title="2.第一个脚本 hello world"></a>2.第一个脚本 hello world</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">echo &quot;hello world&quot; </span><br></pre></td></tr></table></figure>
+<h4 id="3-第二个脚本：-多命令处理"><a href="#3-第二个脚本：-多命令处理" class="headerlink" title="3. 第二个脚本： 多命令处理"></a>3. 第二个脚本： 多命令处理</h4><p>下面的代码是在父目录下创建Ruizhi_test.txt, 并写入”I Love Zhijie”. <br>touch 是用来创建一个文件的without any content. cat 是用来创建一个文件with content.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 #!/bin/bash</span><br><span class="line">2 cd ../</span><br><span class="line">3 touch Ruizhi_test.txt</span><br><span class="line">4 echo &quot;I Love Zhijie&quot; &gt;&gt; Ruizhi_test.txt</span><br></pre></td></tr></table></figure>
+<h2 id="3-shell-中的变量"><a href="#3-shell-中的变量" class="headerlink" title="3. shell 中的变量"></a>3. shell 中的变量</h2><h4 id="1-常用的系统变量"><a href="#1-常用的系统变量" class="headerlink" title="1.常用的系统变量"></a>1.常用的系统变量</h4><ol>
+<li><code>$HOME</code>： 显示home地址，和 ‘cd ‘ 去的地址是一样的。</li>
+<li><code>$PWD</code> ：显示当前地址</li>
+<li><code>$SHELL</code>：显示默认的解析器 &#x2F;bin&#x2F;zsh</li>
+<li><code>$USER</code>: 显示当前用户</li>
+</ol>
+<h4 id="2-自定义变量"><a href="#2-自定义变量" class="headerlink" title="2.自定义变量"></a>2.自定义变量</h4><ol>
+<li><code>A=2</code>.设定变量A.需要注意的是’&#x3D;’两端不能有空格</li>
+<li><code>echo $A</code> 返回2</li>
+<li><code>unset A</code>，撤销A</li>
+<li><code>readonly B=3</code> 声明静态变量，注意：不能unset。</li>
+<li>在bash中， 变量默认类型都是字符串类型，无法直接进行数值计算。eg: <code>C=1+1</code>, <code>echo $C</code><br>这里得出的结果是 ‘1+1’</li>
+<li>变量的值如果有空格，需要加双引号或者单引号。 <code>D=&quot;I LOVE YOU&quot;</code></li>
+<li>可以把变量提升为全局环境变量，可供其他shell 程序使用.</li>
+<li><code>export 变量名</code> 可以将变量提升为全局变量，供其他shell 使用。</li>
+</ol>
+<h4 id="3-特殊变量"><a href="#3-特殊变量" class="headerlink" title="3.特殊变量"></a>3.特殊变量</h4><ol>
+<li><code>$n</code>: n为数字。$0 代表该脚本的名称，$1-$9代表第一到第九个参数。10以上的参数需要用大括号，eg. ${10}.<br>如下面代码所示，$0即为shell的文件名。而$1即为传入的第一个参数。<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 #!/bin/bash</span><br><span class="line">2 echo &quot;$0, $1, $2, $3&quot;</span><br><span class="line"><span class="meta">#</span><span class="language-bash">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % sh helloword.sh I Love YOU</span></span><br><span class="line"><span class="meta">#</span><span class="language-bash">helloword.sh, I, Love, YOU</span></span><br></pre></td></tr></table></figure></li>
+<li><code>$#</code>: 获取所有输入参数的个数。<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1 #!/bin/bash</span><br><span class="line">2 echo &quot;$0, $1, $2, $3&quot;</span><br><span class="line">3 echo $#</span><br><span class="line"><span class="meta">#</span><span class="language-bash">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % sh helloword.sh I Love YOU</span></span><br><span class="line"><span class="meta">#</span><span class="language-bash">helloword.sh, I, Love, YOU</span></span><br><span class="line"><span class="meta">#</span><span class="language-bash">3</span></span><br></pre></td></tr></table></figure></li>
+<li><code>$*</code>: 这个变量代表命令行中所有的参数。把所有参数看做一个整体<br><code>$@</code>: 这个变量也代表命令行中的所有参数，不过其将每个参数区分对待。 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1 #!/bin/bash</span><br><span class="line">2 echo $#</span><br><span class="line">3 echo $*</span><br><span class="line">4 echo $@</span><br><span class="line"><span class="meta">#</span><span class="language-bash">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % sh helloword.sh I Love YOU</span> </span><br><span class="line"><span class="meta">#</span><span class="language-bash">3</span></span><br><span class="line"><span class="meta">#</span><span class="language-bash">I Love YOU</span></span><br><span class="line"><span class="meta">#</span><span class="language-bash">I Love YOU</span></span><br></pre></td></tr></table></figure></li>
+<li><code>$?</code>: 最后一次执行的命令的返回状态。如果这个变量的值为0， 证明上一个命令正常执行； 如果为非0<br>(具体是那个数， 由命令自己决定), 则证明上一条命令执行不正确。<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % sh helloword.sh I Love YOU </span><br><span class="line">3</span><br><span class="line">I Love YOU</span><br><span class="line">I Love YOU</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % echo $?                   </span><br><span class="line">0</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % $?</span><br><span class="line">zsh: command not found: 0</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % echo $? </span><br><span class="line">127</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="4-运算符"><a href="#4-运算符" class="headerlink" title="4.运算符"></a>4.运算符</h2><h4 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1.基本语法"></a>1.基本语法</h4><ol>
+<li><code>$((运算式))</code> 或者 <code>$[运算式]</code></li>
+<li><code>expr +,-,\*,/,%</code> 注意，expr 运算符间要有空格</li>
+</ol>
+<h4 id="2-案例实操"><a href="#2-案例实操" class="headerlink" title="2.案例实操"></a>2.案例实操</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % expr 2 + 3</span><br><span class="line">5</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % expr 2+3</span><br><span class="line">2+3</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % expr 2 + 3 \* 4</span><br><span class="line">14</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % expr `expr 2 + 3` \* 4 #(2+3)*4</span><br><span class="line">20</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % s=$[(2+3)*4]          </span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % echo $s     </span><br><span class="line">20</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-条件判断"><a href="#5-条件判断" class="headerlink" title="5.条件判断"></a>5.条件判断</h2><h4 id="1-基本语法-1"><a href="#1-基本语法-1" class="headerlink" title="1.基本语法"></a>1.基本语法</h4><ol>
+<li><code>[ condition ]</code>, 注意，condition 前后要有空格。<code>[]</code>返回false</li>
+</ol>
+<h4 id="2-常用判断条件"><a href="#2-常用判断条件" class="headerlink" title="2. 常用判断条件"></a>2. 常用判断条件</h4><ol>
+<li>两个整数之间的比较<ol>
+<li><code>-lt</code> 小于</li>
+<li><code>-le</code> 小于等于</li>
+<li><code>-eq</code> 等于</li>
+<li><code>-gt</code> 大于</li>
+<li><code>-ge</code> 大于等于</li>
+<li><code>-ne</code> 不等于</li>
+</ol>
+</li>
+<li>按照文件权限进行判断<ol>
+<li><code>-r</code> 有读的权限</li>
+<li><code>-w</code> 有写的权限</li>
+<li><code>-x</code> 有执行的权限 execute</li>
+</ol>
+</li>
+<li>按照文件类型进行判断<ol>
+<li><code>-f</code> 文件存在并且是一个常规文件 file</li>
+<li><code>-e</code> 文件存在 existence</li>
+<li><code>-d</code> 文件存在并且是一个目录(directory)</li>
+</ol>
+</li>
+<li>多条件判断<ol>
+<li>&amp;&amp; 只有前一条成功，才执行第二条</li>
+<li>|| 只有前一条失败，才执行第二条</li>
+</ol>
+</li>
+</ol>
+<h4 id="3-案例实操"><a href="#3-案例实操" class="headerlink" title="3. 案例实操"></a>3. 案例实操</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % [23 -gt 22]</span><br><span class="line">zsh: bad pattern: [23</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % [ 23 -gt 22 ]</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % echo $?</span><br><span class="line">0</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % [ 23 -lt 22 ]</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % echo $?</span><br><span class="line">1</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % [ -w helloword.sh ]</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % echo $?</span><br><span class="line">0</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % [ 23 -lt 22 ] &amp;&amp; echo OK</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % [ 23 -gt 22 ] &amp;&amp; echo OK</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-流程控制"><a href="#6-流程控制" class="headerlink" title="6. 流程控制"></a>6. 流程控制</h2><h4 id="1-if-判断"><a href="#1-if-判断" class="headerlink" title="1. if 判断"></a>1. if 判断</h4><ol>
+<li>基本语法：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if [ condition ];then</span><br><span class="line">  ...</span><br><span class="line">fi </span><br><span class="line">或者</span><br><span class="line">if [ condition ]</span><br><span class="line">  then</span><br><span class="line">     ...</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+注意事项： 1， <code>[ condition ]</code> 中间必须有空格。 2. if 后要有空格</li>
+<li>案例实操： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  1 #!/bin/bash</span><br><span class="line">  2 if [ $1 -eq 1 ]</span><br><span class="line">  3     then</span><br><span class="line">  4     echo &quot;Ruizhi&quot;</span><br><span class="line">  5 elif [ $1 -eq 2 ];then</span><br><span class="line">  6     echo &quot;Love you&quot;</span><br><span class="line">  7 fi</span><br><span class="line"></span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % sh helloword.sh 1</span><br><span class="line">Ruizhi</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % sh helloword.sh 2</span><br><span class="line">Love you</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="2-case-语句"><a href="#2-case-语句" class="headerlink" title="2. case 语句"></a>2. case 语句</h4><ol>
+<li>基本语法：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">case $变量名 in</span><br><span class="line">  &quot;值1&quot;)</span><br><span class="line">    ...</span><br><span class="line">  ;;</span><br><span class="line">  &quot;值2&quot;)</span><br><span class="line">    ...</span><br><span class="line">  ;;</span><br><span class="line">  *) #默认值</span><br><span class="line">    ...</span><br><span class="line">  ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure></li>
+<li>实例<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">  1 #!/bin/bash</span><br><span class="line">  2 case $1 in</span><br><span class="line">  3 1)</span><br><span class="line">  4     echo &quot;Ruizhi&quot;</span><br><span class="line">  5 ;;</span><br><span class="line">  6 2)</span><br><span class="line">  7     echo &quot;Zhijie&quot;</span><br><span class="line">  8 ;;</span><br><span class="line">  9 *)</span><br><span class="line"> 10     echo &quot;I LOVE YOU&quot;</span><br><span class="line"> 11 ;;</span><br><span class="line"> 12 esac</span><br><span class="line"> </span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % sh helloword.sh 1</span><br><span class="line">Ruizhi</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % sh helloword.sh 2</span><br><span class="line">Zhijie</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % sh helloword.sh we</span><br><span class="line">I LOVE YOU</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="3-for-循环"><a href="#3-for-循环" class="headerlink" title="3. for 循环"></a>3. for 循环</h4><ol>
+<li>基本语法<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(( ; ; ))</span><br><span class="line">  do </span><br><span class="line">    ...</span><br><span class="line">  done</span><br><span class="line">或者</span><br><span class="line">for 变量 in 值1, 值2, 值3...</span><br><span class="line">do </span><br><span class="line">  ...</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
+<li>实例<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1 #!/bin/bash</span><br><span class="line">2 s=0</span><br><span class="line">3 for((i=1;i&lt;=10;i++))</span><br><span class="line">4 do</span><br><span class="line">5   s=$[$s+$i]</span><br><span class="line">6 done</span><br><span class="line">7 echo $s #55</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  1 #!/bin/bash</span><br><span class="line">  2 for i in $*</span><br><span class="line">  3 do </span><br><span class="line">  4     echo &quot;I am $i&quot;</span><br><span class="line">  5 done</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % sh helloword.sh Ruizhi Zhijie Jack</span><br><span class="line">I am Ruizhi</span><br><span class="line">I am Zhijie</span><br><span class="line">I am Jack</span><br></pre></td></tr></table></figure>
+$@ 与 $*的区别<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  1 #!/bin/bash</span><br><span class="line">  2 for i in &quot;$*&quot;</span><br><span class="line">  3 do </span><br><span class="line">  4     echo &quot;I am $i&quot;</span><br><span class="line">  5 done</span><br><span class="line">  6 for i in &quot;$@&quot;</span><br><span class="line">  7 do</span><br><span class="line">  8     echo &quot;I am $i&quot;</span><br><span class="line">  9 done</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % sh helloword.sh Ruizhi Zhijie Jack</span><br><span class="line">I am Ruizhi Zhijie Jack</span><br><span class="line">I am Ruizhi</span><br><span class="line">I am Zhijie</span><br><span class="line">I am Jack</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="4-while-循环"><a href="#4-while-循环" class="headerlink" title="4. while 循环"></a>4. while 循环</h4><ol>
+<li>基本语法<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while [ condition ]</span><br><span class="line">do </span><br><span class="line">  ...</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
+<li>实例<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1 #!/bin/bash</span><br><span class="line">2 s=0</span><br><span class="line">3 i=1</span><br><span class="line">4 while [ $i -lt 100 ]</span><br><span class="line">5 do</span><br><span class="line">6     s=$[$s+$i]</span><br><span class="line">7     i=$[$i+1]</span><br><span class="line">8 done</span><br><span class="line">9 echo $s #4950</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="7-read-读取控制台输入"><a href="#7-read-读取控制台输入" class="headerlink" title="7. read 读取控制台输入"></a>7. read 读取控制台输入</h2><h4 id="1-基本语法-2"><a href="#1-基本语法-2" class="headerlink" title="1. 基本语法"></a>1. 基本语法</h4><p>read(选项)(参数)</p>
+<ol>
+<li>选项: <br> <code>-p</code>： 指定读取值时的提示符<br> <code>-t</code>: 指定读取值等待的时长(秒)</li>
+<li>参数 <br> 变量: 指定读取值的变量</li>
+</ol>
+<h4 id="2-实例"><a href="#2-实例" class="headerlink" title="2. 实例"></a>2. 实例</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  1 #!/bin/bash</span><br><span class="line">  2 read -t 7 -p &quot;Enter your name in 7 Sec&quot; NAME# NAME是输入的存储的位置</span><br><span class="line">  3 echo $NAME</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % sh helloword.sh #7秒内没有输入</span><br><span class="line">Enter your name in 7 Sec</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % sh helloword.sh</span><br><span class="line">Enter your name in 7 SecRuizhi Zhang</span><br><span class="line">Ruizhi Zhang</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-函数"><a href="#8-函数" class="headerlink" title="8. 函数"></a>8. 函数</h2><h4 id="1-系统函数"><a href="#1-系统函数" class="headerlink" title="1. 系统函数"></a>1. 系统函数</h4><ol>
+<li>basename: <code>basename[string/pathname][suffix]</code> basename 命令会删掉最后一个<code>/</code>前的的所有字符，包括<code>/</code>. <ol>
+<li>选项： suffix 为后缀，如果suffix 被指定，basename 会将pathname 或string 中的suffix删去</li>
+<li>实例：  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % basename /Users/ruizhizhang/Documents/Ruizhi_test.txt </span><br><span class="line">Ruizhi_test.txt</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % basename /Users/ruizhizhang/Documents/Ruizhi_test.txt .txt</span><br><span class="line">Ruizhi_test </span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>dirname: <code>dirname 文件绝对路径</code> 从给定的包含绝对路径的文件名去除文件名 (非目录的部分), 然后返回剩下的路径(目录部分)<ol>
+<li>实例 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % dirname /Users/ruizhizhang/Documents/Ruizhi_test.txt </span><br><span class="line">/Users/ruizhizhang/Documents </span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h4 id="2-自定义函数"><a href="#2-自定义函数" class="headerlink" title="2. 自定义函数"></a>2. 自定义函数</h4><ol>
+<li>基本语法 <br><code>[]</code>的意思是，里面的东西可以选填<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[function] funname[()]</span><br><span class="line">&#123;</span><br><span class="line">  Action;</span><br><span class="line">  [return int;]</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li>注意事项<ol>
+<li>必须在调用函数地方之前先声明函数，shell 脚本是逐行运行， 不会像其他语言，先编译</li>
+<li>函数返回值只能通过<code>$?</code>获取. 可以显性得加 <code>return</code>返回，如果不加，将以最后一条命令运行结果作为返回值。<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> 1 #!/bin/bash</span><br><span class="line"> 2 function sum()</span><br><span class="line"> 3 &#123;</span><br><span class="line"> 4     s=0;</span><br><span class="line"> 5     s=$[$1+$2]</span><br><span class="line"> 6     return $s</span><br><span class="line"> 7 &#125;</span><br><span class="line"> 8 read -p &quot;input your parameter1:&quot; P1</span><br><span class="line"> 9 read -p &quot;input your p2:&quot; P2</span><br><span class="line">10 sum $P1 $P2</span><br><span class="line">11 echo $?</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="9-shell-工具"><a href="#9-shell-工具" class="headerlink" title="9. shell 工具"></a>9. shell 工具</h2><h4 id="1-cut"><a href="#1-cut" class="headerlink" title="1. cut"></a>1. cut</h4><ol>
+<li>基本语法<br><code>cut[选项参数] filename</code>： 说明，默认的分隔符是制表符<ol>
+<li><code>-f</code>: 列号，提取第几列</li>
+<li><code>-d</code>: 分隔符， 按照指定分隔符分割列</li>
+</ol>
+</li>
+<li>实例<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cut -d &quot; &quot; -f 1 a.txt # 以空格为分隔符，分割文件，然后取第一列</span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % echo $PATH</span><br><span class="line">/Users/ruizhizhang/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin</span><br><span class="line"><span class="meta">#</span><span class="language-bash">选取PATH 变量值第二个<span class="string">&quot;:&quot;</span>开始后的所有路径</span></span><br><span class="line">ruizhizhang@Ruizhi-Zhangs-MacBook-Pro PYTHON % echo $PATH | cut -d : -f 3- </span><br><span class="line">/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="2-sed"><a href="#2-sed" class="headerlink" title="2. sed"></a>2. sed</h4><ol>
+<li>基本语法<br><code>sed[选项参数] &#39;command&#39; filename</code>: sed 是一种流编辑器，一次处理一行内容。处理时，把当前处理的行存储在临时<br>缓存区中，称为”模块控件”。接着用sed命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。接着处理下一行，这样不断<br>重复，直到文件末尾。文件内容并未改变</li>
+<li>选项参数<ol>
+<li><code>-e</code> 有多个命令执行时，要用到’-e’</li>
+</ol>
+</li>
+<li>命令功能描述<ol>
+<li><code>a</code> 新增，a 的后面可以接字符串，在下一行出现</li>
+<li><code>d</code> 删除</li>
+<li><code>s</code> 查找并替换</li>
+</ol>
+</li>
+<li>实例<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sed &quot;2a mei nv&quot; a.txt # 将mei nv 插入到a.txt 的二行下面，并打印。 (a.txt 不变)</span><br><span class="line">sed &quot;/wo/d&quot; a.txt #删除a.txt中包含&#x27;wo&#x27;的行全部删除，并打印</span><br><span class="line">sed &quot;s/wo/ni/g&quot; sed.txt # 将&#x27;wo&#x27; 全部替换为&#x27;ni&#x27;. </span><br><span class="line">sed -e &quot;2d&quot; -e &quot;s/wo/ni/g&quot; a.txt # 将第二行删除，并将&#x27;wo&#x27;替换为&#x27;ni&#x27;。 </span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="3-awk"><a href="#3-awk" class="headerlink" title="3. awk"></a>3. awk</h4><ol>
+<li>基本用法<br><code>awk[选项参数] &#39;pattern1&#123;action1&#125; pattern2&#123;action2&#125;...&#39; filename</code>: 一个强大的文本分析工具，把文本逐行读入，以空格为<br>默认分隔符将每行切片，切开的部分在进行分析处理。<ol>
+<li><code>patten</code> 表示AWK在数据中查到的内容，就是匹配模式</li>
+<li><code>action</code> 在找到匹配内容时所执行的一系列命令</li>
+</ol>
+</li>
+<li>选项参数说明<ol>
+<li><code>-F</code> 指定输入文件拆分隔符</li>
+<li><code>-v</code> 赋值一个用户定义的变量。</li>
+</ol>
+</li>
+<li>实例<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">None</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/03/18/shell-%E5%9F%BA%E7%A1%80/" data-id="cl0xdqveh0000x0uxaw4y0fw1" data-title="shell_基础" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/15/regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">regex 正则表达</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/18/shell-%E5%9F%BA%E7%A1%80/">shell_基础</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/15/regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE/">regex 正则表达</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/10/JSON-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">JSON 基本知识</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/09/Python-GUI/">Python GUI</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/08/Python-%E5%9F%BA%E7%A1%80/">Python 基础</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
