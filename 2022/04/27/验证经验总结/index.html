@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>验证经验总结 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="验证经验 对于一些counter, 不应该按照design的位宽去定义其位宽，如果定义成一样的位宽，就有可能 miss overflow issue signal-level errors are trapped by assertions in the interface; protocol errors are spotted by monitors; andtransaction-level">
+<meta property="og:type" content="article">
+<meta property="og:title" content="验证经验总结">
+<meta property="og:url" content="http://example.com/2022/04/27/%E9%AA%8C%E8%AF%81%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="验证经验 对于一些counter, 不应该按照design的位宽去定义其位宽，如果定义成一样的位宽，就有可能 miss overflow issue signal-level errors are trapped by assertions in the interface; protocol errors are spotted by monitors; andtransaction-level">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-28T04:45:48.000Z">
+<meta property="article:modified_time" content="2022-04-28T04:50:11.056Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-验证经验总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/27/%E9%AA%8C%E8%AF%81%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" class="article-date">
+  <time class="dt-published" datetime="2022-04-28T04:45:48.000Z" itemprop="datePublished">2022-04-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      验证经验总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="验证经验"><a href="#验证经验" class="headerlink" title="验证经验"></a>验证经验</h2><ol>
+<li>对于一些counter, 不应该按照design的位宽去定义其位宽，如果定义成一样的位宽，就有可能 miss overflow issue</li>
+<li>signal-level errors are trapped by assertions in the interface; protocol errors are spotted by monitors; and<br>transaction-level bugs are found by scoreboards. </li>
+<li>agent 应该是per bus&#x2F;interface 的。</li>
+<li>绝大多数的test都应该是random tests. </li>
+<li>在testbench中， 应该有一个CFG class, 他的作用是确定DUT 如何configure, how to generate stimulus, and how to build the testbench.</li>
+<li>CFG class中，应该有些knobs， 可以随机化去影响simulation.</li>
+<li>cfg class应该在base_test中实例化，然后传递handle给env.</li>
+<li>每一个env 都应该有一个自己的CFG class. 同时，这个CFG class 可能包含其他的cfg class。 如果这个env包含一些lower-level的env, 那么，cfg class<br>中也要对应的包含lower-level ones. 同时，before build anything, 应该先创建highest-level cfg class, 然后随机化，and then, 根据cfg class<br>中的信息去决定整个TB应该如何被创建。</li>
+<li>&#96;uvm_fileld_* will automate a lot of work for us, and we should always use them in the components we write. </li>
+<li>在TLM中， port 是用来发起数据的传输； imp是用来接收数据的传输； export是用来将imps expose给更高等级的components.</li>
+<li>使用TLM 而非传递handles的原因有以下几点：<ol>
+<li>handles可能无法知道哪一部分unexpected modify the data. </li>
+<li>使用TLM可以很清楚的看到数据从哪里传向哪里。</li>
+<li>当然，以下几种情况更适合用handles:<ol>
+<li>sequence have handles to the sequencer, so they can see random knobs, and react to monitored event. </li>
+<li>对于cfg class, 所有的componnents 都应该通过handles 去访问同一个实例化的cfg class.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>cfg class在create的时候应该带上get_full_name(), eg: <br><code>clk_rst_cfg = clk_rst_cfg_c::type_id::create(&#123;get_full_name(), &quot;.cclk_rst_cfg&quot;&#125;);</code><br>这样做的目的是为了好debug。 因为Cfg是object， 没有component hierarchy，所有，在有多个clk_rst_cfg 时，可能会搞混，不知道信息到底来自于哪一个cfg. </li>
+<li>sequencer: 多个seq经常在同一seqr上同时launch, seqr将会决定先发送哪一个。 </li>
+<li>vkit: modules, interface and teh packages are put together, they are collectively known as a verification kit. &#x3D;&gt; vkit.</li>
+<li>uvm_config_db 中的set 和 get的类型必须一致，即使是child &amp; parent class， 也不行。</li>
+<li><ol>
+<li>当 assigning a value to a variable with 32 bits or fewer, it’s fine if 你没有申明值的宽度 <br>For example:<br> <code>a_item.addr = &#39;h8000_0048; // works fine</code> </li>
+<li>但是当给一个宽于32bits的变量赋值时， 你必须要指明值的宽度. Otherwise,<br>Verilog will truncate all bits beyond the 32nd. For example:</li>
+</ol>
+</li>
+</ol>
+<p>   <code>a_item.addr = &#39;h8_0000_0048;  // MSB truncated! Assigns addr to &#39;h48</code><br>   <code>a_item.addr = 64&#39;h8_0000_0048; // works fine! </code><br>17. 我们不能只读或者写单个reg_field. 只能access 整个reg.<br>18. difference between volatile and non-volatile<br>    1. non-volatile is the one that can be described as “set-andforget.” Once written to, this field will never change its<br>value until another write occurs.<br>    2. volatile can be changed by the RTL at any time.<br>19. ral_block 应该在base_test中声明并实例化<br>20. 在对uvm reg进行读写之前，必须对map 进行下列两项操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ral_block_a.get_default_map().set_sequencer(m_env.seqr, ral_adapter);</span><br><span class="line">ral_block_a.get_default_map().set_auto_predict(0);</span><br></pre></td></tr></table></figure>
+<p>uvm_reg_map.set_sequencer()</p>
+<blockquote>
+<p>virtual function void set_sequencer ( uvm_sequencer_base  sequencer,    <br>uvm_reg_adapter  adapter  &#x3D;  null )<br>Set the sequencer and adapter associated with this map.  This method must be called before starting any sequences based on uvm_reg_sequence.</p>
+</blockquote>
+<ol start="20">
+<li>uvm_reg_predictor 在声明的时候必须声明其BUSTYPE.<br><code>class uvm_reg_predictor #(type BUSTYPE=int) extends uvm_component</code><br>而在实例化中， 也需要声明其BUSTYPE<br><code>predictor = uvm_reg_predictor#(item_c)::type_id::create(&quot;predictor&quot;, this);</code></li>
+<li>predictor 在实例化以后需要做以下几项事情：1. assign adapter and map. 2, connect bus_in imp with the port in monitor.<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">predictor.adapter = adapter;</span><br><span class="line">predictor.map = ral_block.get_default_map();</span><br><span class="line">env.mst_agent.mon.item_port.connect(predictor.bus_in);</span><br></pre></td></tr></table></figure></li>
+<li>我们应该在driver &amp; monitor 中使用clocking block. That will solve all of the race conditions and will make your transactors behave like real hardware.<br>eg: 这个cb 会告诉simulator, b是一个以posedge clk 对应的output，因此，当使用此cb去drive signals的话，simulator 会知道在posedge clk后再去驱动b.<br>而对于a, 它将会在posedge clk前被sample. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">clocking drv_cb @(posedge clk);</span><br><span class="line">  output b;</span><br><span class="line">  input a;</span><br><span class="line">endclocking :drv_cb</span><br></pre></td></tr></table></figure></li>
+<li>在config.pl或者pkg.sv中， 添加文件或者include file的顺序很重要，如果A需要用到B中的东西， 那么应该先添加B再添加A.</li>
+<li>x_check 应该被放在interface中去做。任何signal-related checking 如果可以放在assertion里面，那就放在assertion中。</li>
+<li>Should you call write() or update() on the B register?<br>Using the write() task instead of the update() task could be important. If back-to-back data chosen happened to be the same,<br>then the update() task might not perform the second write. However, in this case because the B field is<br> built as volatile, even an update() will perform the write. (It’s best to be safe, though).</li>
+<li>如非必要，不要predict the pins value at every clk cycle. 这会耗费大量的精力。如果要比较的act&#x2F;exp的值之间有几个clk的delay, 可以<br>把数据放在fifo中， 这样就不需要考虑delay了。 </li>
+<li>在构建coverage group 时，有一点很重要，就是，我们需要collect coverage on what happened, instead of what we think happened. 比如，<br>不能将covergroup 放在seq中，而应该将其放在input output的interface中， 去收集数据。也可以将其放在monitor中， 在monitor处理完数据后进行收集。</li>
+<li>The Z state is used for modeling a number situations where there are multiple drivers on a single net. </li>
+<li>需要注意，systemverilog 会自动截断和填充不同的位宽，因此应当注意溢出事件。同时还应当注意处理有符号和无符号算术。比如说下面这两个expression. 他们看起来一样，<br>但是都隐含着问题。expression A， let’s say X is 32bits, if X &#x3D;&#x3D; ‘hF000_0001, X*4 &#x3D;&#x3D; ‘h0000_0004, it will be equal to Y&#x3D;&#x3D; 4. The fix for this is making sure the width of the multiplication result is large enough not to truncate using : <code>(X * 34’d4) == Y</code><br>Expression B的问题就更明显了， let’s say Y &#x3D;&#x3D; ‘h3， Y&#x2F;4 &#x3D;&#x3D; ‘h0, &#x3D;&gt; it will be equal to X &#x3D;&#x3D; 0</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Expression A: (X * 4) == Y</span><br><span class="line">Expression B:  X == (Y /4)</span><br></pre></td></tr></table></figure>
+<h2 id="特定语法"><a href="#特定语法" class="headerlink" title="特定语法"></a>特定语法</h2><h4 id="1-如何在bind-中使用-96-ifdef"><a href="#1-如何在bind-中使用-96-ifdef" class="headerlink" title="1. 如何在bind 中使用 &#96;ifdef"></a>1. 如何在bind 中使用 &#96;ifdef</h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bind</span> mm_component oc_if oc_if_1(</span><br><span class="line">    <span class="variable">.reset_n</span>(reset_n),</span><br><span class="line">    <span class="variable">.always_on_clk</span>(<span class="meta">`<span class="keyword">ifdef</span> DD_TB</span></span><br><span class="line">                     m_clk</span><br><span class="line">                  <span class="meta">`<span class="keyword">else</span> </span></span><br><span class="line">                     n_clk</span><br><span class="line">                  <span class="meta">`<span class="keyword">endif</span>),</span></span><br><span class="line">    ...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-constraint"><a href="#2-constraint" class="headerlink" title="2. constraint"></a>2. constraint</h4><ol>
+<li><p>generate an array of random numbers where a certain value is repeated fixed number of times<br>对于下面的arr, 我想constraint使其中10个elements 的值为5. 如何去做呢？ </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class numberGen;</span><br><span class="line">  rand bit[7:0] arr[100];</span><br><span class="line">  int i,j;</span><br><span class="line">  function new();</span><br><span class="line">    i = 5; j = 10;</span><br><span class="line">  endfunction</span><br><span class="line">  constraint pick_ij &#123;(arr.sum(item) with (int&#x27;(item==i))) == j;&#125;</span><br><span class="line">endclass : numberGen</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>generate non repeating values in an array of class</p>
+<pre><code>class A;
+rand bit [3:0] value [10];
+constraint CYCLC &#123; unique &#123;value&#125;;&#125;
+</code></pre>
+</li>
+</ol>
+<h4 id="3-difference-between-39-and"><a href="#3-difference-between-39-and" class="headerlink" title="3. difference between &#39;{}and {}"></a>3. difference between <code>&#39;&#123;&#125;</code>and <code>&#123;&#125;</code></h4><ol>
+<li><code>&#123;&#125;</code> means concatenation. It results in a vector that consists of bits of its operands. It is used in generic verilog operations. </li>
+<li><code>&#39;&#123;&#125;</code> is a definition of a anonymous aggregate structure such as an array or struct. It is used in aggregate&#x2F;pattern assignments. It also has a set of features to do pattern expression to assign to specified members of structs and arrays.</li>
+<li>In case of packed arrays and structs and without pattern expressions both operators behave similarly.</li>
+<li>实例： <blockquote>
+<p>int A3[1:3]; <br>int A9[1:9];<br>A3 &#x3D; ‘{1, 2, 3}; &lt;– legal (case0)<br>A9 &#x3D; ‘{3{A3}}; &lt;– illegal (case1)<br>A9 &#x3D; {A3, 4, 5, A3, 6}; &lt;– legal (case2)<br>A9 &#x3D; ‘{9{1}}; &lt;– legal (case3)<br>A9 &#x3D; {9{1}}; &lt;– illegal (case4)<br> assignment patterns require each operands to be assignment compatible with each array element, and there needs to be an operand in the pattern for each element of the array. replication of operands is allowed<br>Array concatenation requires that each operand be assignment compatible with an element of the array, or an array of elements that are assignment compatible with an element of the array. Replication is not allowed.<br>case0 is an assignment pattern of 3 operands to an array of three elements<br>case1 is illegal because Your assignment pattern only has three (repeated) operands where nine are required. And the three operands you do have are not assignment compatible: each element. needs to be an int, not an array of ints.<br>case2 is an array concatenation whose operands total 9 array elements<br>case3 is an assignment pattern of 9 replicating operands into an array of 9 elements<br>case4 is illegal because array concatenation does not allow replication.\</p>
+</blockquote>
+</li>
+<li>总结： 如果有replicating operands, <code>&#123;(num)&#123;...&#125;&#125;</code>,那么必须用<code>&#39;&#123;&#125;</code>, 而且，用<code>&#39;&#123;&#125;</code>的时候，一定要确保前后值位数一致</li>
+</ol>
+<h2 id="程序细节"><a href="#程序细节" class="headerlink" title="程序细节"></a>程序细节</h2><h4 id="1-how-to-start-a-test"><a href="#1-how-to-start-a-test" class="headerlink" title="1. how to start a test?"></a>1. how to start a test?</h4><p>A test is usually started within testbench top by a task called run_test.<br>This global task should be supplied with the name of user-defined UVM test that needs to be started. If the argument to run_test is blank, it is necessary to specify the testname via command-line options to the simulator using <code>+UVM_TESTNAME</code>.</p>
+<h4 id="2-系统的top-level应该如何构建？"><a href="#2-系统的top-level应该如何构建？" class="headerlink" title="2. 系统的top level应该如何构建？"></a>2. 系统的top level应该如何构建？</h4><ol>
+<li>在top.sv中，在一个<code>inital block</code>中<code>run_test();</code></li>
+<li>在base_test中，创建并初始化各个component, ral_block，并将其连接起来。 <h4 id="3-difference-bewteen-tb-top-and-hw-top"><a href="#3-difference-bewteen-tb-top-and-hw-top" class="headerlink" title="3. difference bewteen tb_top and hw_top"></a>3. difference bewteen tb_top and hw_top</h4></li>
+<li>tb_top has the instances, bindings and registrations of all of the testbench interfaces. </li>
+<li>hw_top: 这里会有DUT instance, 并且会有相应的wiring connections.</li>
+</ol>
+<h2 id="4-vim中好用的几个命令"><a href="#4-vim中好用的几个命令" class="headerlink" title="4. vim中好用的几个命令"></a>4. vim中好用的几个命令</h2><h4 id="1-VIM-的代码提示功能"><a href="#1-VIM-的代码提示功能" class="headerlink" title="1. VIM 的代码提示功能"></a>1. VIM 的代码提示功能</h4><p>在编辑模式下 ，快捷键 Ctrl+n 或者 Ctrl+p 会有代码提示功能，我们可以实现快速录入的效果。</p>
+<h4 id="2-可视化模式下-v-的特殊操作"><a href="#2-可视化模式下-v-的特殊操作" class="headerlink" title="2.可视化模式下 v 的特殊操作"></a>2.可视化模式下 v 的特殊操作</h4><p>当操作的文本光标在 “”，‘’ ，（），{} ，[（双引号，单引号，小括号，大括号，中括号）<br>当中的时候,可以通过 va”选中 ”“ 内的所有内容包括双引号 ，vi” 选中 “” 内的所有内容，不包括 “”。va,vi 会快速选择区域，va 后面会紧跟一个区域结束标志，a 会选中结束符标志，i 就不会。</p>
+<h4 id="3-宏录制的录制操作"><a href="#3-宏录制的录制操作" class="headerlink" title="3.宏录制的录制操作"></a>3.宏录制的录制操作</h4><p>先将光标移动到第一行，在普通模式下按下 q 键（宏录制是 q 键启动的),在按一个 a （字母随意）,表示该宏注册为 a ，按下 I 在行首插入一个 tab 键，按下jj或者 <ESC>退出编辑模式,按下 j 将光标移动到下一行行首，最后按下 q 键完成录制操作（宏录制是 q 键结束的）。<br>总结上面例子的操作流程：<br>q → a → I → tab → jj → j → q <br>上面的例子成功地把在行首插入 tab 的功能录制了下来，那么如何应用到其他行呢？</p>
+<h4 id="4-宏录制的使用"><a href="#4-宏录制的使用" class="headerlink" title="4.宏录制的使用"></a>4.宏录制的使用</h4><p>上述的例子，在正常模式下，按 @a执行宏录制的一系列动作，将会在第二行执行插入 tab 。<br>@@ 是对上一次宏使用的重复操作。n@a 就会执行 n 次一系列的动作。使用宏录制可以一次执行一系列的操作，可以针对一些重复度较高的操作进行宏录制。</p>
+<h4 id="5-在当前行上移动光标"><a href="#5-在当前行上移动光标" class="headerlink" title="5. 在当前行上移动光标"></a>5. 在当前行上移动光标</h4><ol>
+<li><code>0</code> 移动到行头</li>
+<li><code>^</code> 移动到本行的第一个不是 blank 字符</li>
+<li><code>$</code> 移动到行尾<h4 id="6-跨行移动光标"><a href="#6-跨行移动光标" class="headerlink" title="6. 跨行移动光标"></a>6. 跨行移动光标</h4></li>
+<li><code>H</code> 光标定位到当前屏幕的第一行行首</li>
+<li><code>M</code> 光标移动到当前屏幕的中间</li>
+<li><code>L</code> 光标移动到当前屏幕的尾部<h4 id="7-Mark-标记"><a href="#7-Mark-标记" class="headerlink" title="7. Mark 标记"></a>7. Mark 标记</h4></li>
+<li>什么是 mark ? 我们通常在读一本很厚的书的时候，通常会加上一个书签，用来标记我们的进度，在 vim 当中也有一个类似的概念，我们也可以使用 vim 在我们的文件上打上一个标记，方便我们快速的跳到这个位置。</li>
+<li>如何使用 mark ? 按下键盘上的 m , 紧跟着在按下键盘上的（a-zA-Z）当中的任何一个字母，这样一个标记 （mark）例如 ma, mA 这样一个名字叫做 a 或者 A 的标记就建立起来了。<br>例如 :<br>ma<br>意思在当前文件的光标所在的行建立了一个标记，以后我们可以快速定位到这个位置。</li>
+<li>如何激活标记？<br>使用 ‘（单引号） 或者 <code>(常规键盘靠近数字键 1 左边的按键，我这里就做撇号) ，紧接着按下当初标记的那个字母就会跳到当初标记的那个位置。 例如 ：</code>a 和 ‘a</li>
+</ol>
+<h2 id="shell-命令"><a href="#shell-命令" class="headerlink" title="shell 命令"></a>shell 命令</h2><h4 id="1-命令行光标移动技巧"><a href="#1-命令行光标移动技巧" class="headerlink" title="1. 命令行光标移动技巧"></a>1. 命令行光标移动技巧</h4><blockquote>
+<p>Ctrl – a ：移到行首<br>Ctrl – e ：移到行尾<br>Ctrl – b ：往回(左)移动一个字符<br>Ctrl – f ：往后(右)移动一个字符<br>Alt – b ：往回(左)移动一个单词<br>Alt – f ：往后(右)移动一个单词<br>Ctrl – xx ：在命令行尾和光标之间移动</p>
+</blockquote>
+<h4 id="2-命令行编辑命令"><a href="#2-命令行编辑命令" class="headerlink" title="2. 命令行编辑命令"></a>2. 命令行编辑命令</h4><blockquote>
+<p>Ctrl - w: 从光标位置删除到行首 <br>Crtl - k: 从光标开始，删除到行尾。<br>Ctrl - y: 粘贴之前删除的内容到光标后 <br>Ctrl - r: 搜索历史命令，随着输入会显示历史命令中的一条匹配命令。enter执行。<br>Ctrl - g: 从历史搜索模式中退出.</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/27/%E9%AA%8C%E8%AF%81%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" data-id="cl2ijblru0001t0ux3fhw0910" data-title="验证经验总结" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/04/27/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%B9%B6%E8%A1%8C%E5%A4%9A%E6%A0%B8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          读书笔记 -- 并行多核体系结构基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/18/shell-%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">shell_基础</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/27/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%B9%B6%E8%A1%8C%E5%A4%9A%E6%A0%B8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/">读书笔记 -- 并行多核体系结构基础</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/27/%E9%AA%8C%E8%AF%81%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">验证经验总结</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/18/shell-%E5%9F%BA%E7%A1%80/">shell_基础</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/15/regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE/">regex 正则表达</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/10/JSON-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">JSON 基本知识</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

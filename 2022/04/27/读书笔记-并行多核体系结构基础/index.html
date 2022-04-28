@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>读书笔记 -- 并行多核体系结构基础 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="读书笔记 —— 并行多核体系结构基础第一章、多核体系结构概述动态功耗和静态功耗die上有静态和动态两种. 将1，3 两式相结合，可以看出，影响动态功耗最重要的杠杆是电源电压。但是，如果我们降低电源电压， f 频率也会跟着降低， 除非阈值电压能够充分降低。然而， 如果阈值电压降低，静态功耗中的漏电流会指数升高。  动态功耗   静态功耗    而时钟频率和电源电压的关系, a 的值大约为1.3  核">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记 -- 并行多核体系结构基础">
+<meta property="og:url" content="http://example.com/2022/04/27/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%B9%B6%E8%A1%8C%E5%A4%9A%E6%A0%B8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="读书笔记 —— 并行多核体系结构基础第一章、多核体系结构概述动态功耗和静态功耗die上有静态和动态两种. 将1，3 两式相结合，可以看出，影响动态功耗最重要的杠杆是电源电压。但是，如果我们降低电源电压， f 频率也会跟着降低， 除非阈值电压能够充分降低。然而， 如果阈值电压降低，静态功耗中的漏电流会指数升高。  动态功耗   静态功耗    而时钟频率和电源电压的关系, a 的值大约为1.3  核">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/pic_for_Multicore_Arch/img.png">
+<meta property="og:image" content="http://example.com/pic_for_Multicore_Arch/static_power.png">
+<meta property="og:image" content="http://example.com/pic_for_Multicore_Arch/freq_and_vol.png">
+<meta property="og:image" content="http://example.com/pic_for_Multicore_Arch/multi_CPU_share_cache.png">
+<meta property="og:image" content="http://example.com/pic_for_Multicore_Arch/TS.png">
+<meta property="og:image" content="http://example.com/pic_for_Multicore_Arch/TTSL.png">
+<meta property="article:published_time" content="2022-04-28T04:50:53.000Z">
+<meta property="article:modified_time" content="2022-04-28T04:56:34.044Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/pic_for_Multicore_Arch/img.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-读书笔记-并行多核体系结构基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/27/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%B9%B6%E8%A1%8C%E5%A4%9A%E6%A0%B8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2022-04-28T04:50:53.000Z" itemprop="datePublished">2022-04-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      读书笔记 -- 并行多核体系结构基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="读书笔记-——-并行多核体系结构基础"><a href="#读书笔记-——-并行多核体系结构基础" class="headerlink" title="读书笔记 —— 并行多核体系结构基础"></a>读书笔记 —— 并行多核体系结构基础</h2><h4 id="第一章、多核体系结构概述"><a href="#第一章、多核体系结构概述" class="headerlink" title="第一章、多核体系结构概述"></a>第一章、多核体系结构概述</h4><h6 id="动态功耗和静态功耗"><a href="#动态功耗和静态功耗" class="headerlink" title="动态功耗和静态功耗"></a>动态功耗和静态功耗</h6><p>die上有静态和动态两种. 将1，3 两式相结合，可以看出，影响动态功耗最重要的杠杆是电源电压。但是，如果我们<br>降低电源电压， f 频率也会跟着降低， 除非阈值电压能够充分降低。然而， 如果阈值电压降低，静态功耗中的漏电流会指数升高。</p>
+<ol>
+<li>动态功耗 <br> <img src="/pic_for_Multicore_Arch/img.png"></li>
+<li>静态功耗 <br> <img src="/pic_for_Multicore_Arch/static_power.png"> </li>
+<li>而时钟频率和电源电压的关系, a 的值大约为1.3<br><img src="/pic_for_Multicore_Arch/freq_and_vol.png"></li>
+</ol>
+<h6 id="核数不能无限增长的原因："><a href="#核数不能无限增长的原因：" class="headerlink" title="核数不能无限增长的原因："></a>核数不能无限增长的原因：</h6><ol>
+<li>增加更多的核需要以超线性的方式填充支撑他们的基础组件。比方说，从片外主存获取数据， 其数据带宽很难随着核心数增加而增加， 从而，我<br>们不得不增加cache的大小来避免数据带宽的快速增长。 而根据经验法则，必须将高速缓存的大小增加4倍，才能将其缺失率降低50%。</li>
+<li>并行运算中的非并行部分日益成为瓶颈。</li>
+<li>功率墙</li>
+</ol>
+<h4 id="第二章、并行编程概述"><a href="#第二章、并行编程概述" class="headerlink" title="第二章、并行编程概述"></a>第二章、并行编程概述</h4><h6 id="进程和线程的区别："><a href="#进程和线程的区别：" class="headerlink" title="进程和线程的区别："></a>进程和线程的区别：</h6><ul>
+<li>进程&#x3D;&#x3D; 火车，线程 &#x3D;&#x3D; 车厢。 进程是资源分配的最小单位，线程是CPU调度的最小单位。 </li>
+<li>线程在进程下行进 (单纯的车厢无法运行)</li>
+<li>一个进程可以包含多个线程 (一辆火车包含多个车厢)</li>
+<li>不同进程间数据很难共享(一辆火车上的乘客很难换到另一辆火车上)</li>
+<li>同一进程下不同线程间的数据很容易共享</li>
+<li>进程要比线程消耗更多的计算机资源</li>
+<li>进程间不会相互影响，一个线程挂掉将会导致整个进程挂掉</li>
+<li>进程最适合多核</li>
+</ul>
+<h4 id="第三章、-共享存储并行编程"><a href="#第三章、-共享存储并行编程" class="headerlink" title="第三章、 共享存储并行编程"></a>第三章、 共享存储并行编程</h4><h4 id="第五章、-存储层次结构概述"><a href="#第五章、-存储层次结构概述" class="headerlink" title="第五章、 存储层次结构概述"></a>第五章、 存储层次结构概述</h4><h6 id="各个存储层次的延迟："><a href="#各个存储层次的延迟：" class="headerlink" title="各个存储层次的延迟："></a>各个存储层次的延迟：</h6><ol>
+<li>内层高速缓存：若干个时钟</li>
+<li>外层高速缓存： 十几个时钟</li>
+<li>本地主存： 上百个时钟</li>
+<li>远端存储： 上千个时钟 \</li>
+</ol>
+<h6 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h6><p>处理器速度的增长远远超过主存访问时延的下降速率。过去，一个load指令可以在一个CPU时钟周期内从主存读到所需的数据，而现在需要上百个时钟周期。在此期间，<br>CPU缺少可以执行的独立指令而大部分时间处于停滞状态。这正是高速缓存发展的初衷。<br>L1 和 L2 高速缓存的命中率可以达到 70% ~ 95%</p>
+<h6 id="数据写策略"><a href="#数据写策略" class="headerlink" title="数据写策略"></a>数据写策略</h6><p>cache是临时存储，存储程序和数据的主要地方还是主存。因此cache设计中面临的一个重要问题是当处理器修改了高速缓存中的数据后，这些修改什么时候<br>被传播到外层存储层次。实现中有两种选择：写直达和写回。</p>
+<ol>
+<li>写直达： cache中的任何一个字节的修改都会被立刻传播到外层存储层次。</li>
+<li>写回： 只有当cache中的block被替换时，这些被修改的数据块会写回并覆盖外层存储层次中的过时数据。当然，不需要全部写回，只写回那些被cache中修改过的数据块。</li>
+<li>对于memory, 由于片外带宽非常有限，因此往往采取写回的策略。</li>
+<li>对于cache, 由于片上带宽较大，因此往往采用写直达的策略。</li>
+<li>另一个影响策略选择的因素是硬件故障下的容错。当遇到阿尔法粒子或者宇宙射线时，cache中的数据位会反转其存储的值。cache虽然没有被损坏，但是丢失了<br>存储的数据。在写直达中，当检测到故障时，可以安全地丢弃出现故障的数据块并从外层存储中重新读取。而写回策略，仅仅只有故障检测并不充足。因此，采用写回策略<br>的cache不仅仅需要错误检测，还需要错误纠正。因此，冗余数据位ECC (ERROR Correcting Code) 被添加到cache中。ECC会增加访问时延。</li>
+</ol>
+<h6 id="一种LRU的实现方法（工作中遇到的"><a href="#一种LRU的实现方法（工作中遇到的" class="headerlink" title="一种LRU的实现方法（工作中遇到的):"></a>一种LRU的实现方法（工作中遇到的):</h6><ol>
+<li>每一个slot 对应有一个bit</li>
+<li>当需要替换slot时，替换bit 为0的slots</li>
+<li>当slot 被替换后，或者被访问时， bit 赋值为1. </li>
+<li>当所有的slot 的bit 为1时， 同时赋值为0.</li>
+</ol>
+<h6 id="L2-cache-容量大小的影响："><a href="#L2-cache-容量大小的影响：" class="headerlink" title="L2 cache 容量大小的影响："></a>L2 cache 容量大小的影响：</h6><ol>
+<li>一般情况下，L2对L1采用包含策略，即L1的数据全部包含在L1中， 因此，这一部分会被浪费掉。增加L2的大小可以减少浪费的比例</li>
+<li>缩小L2的大小可以降低访问延迟</li>
+<li>增大L2的大小可以降低访问缺失率 (miss)</li>
+<li>较大的L2会产生更高的功耗。</li>
+<li>根据IBM估计，同容量的cache, 使用eDRAM要比SRAM 小三倍。</li>
+</ol>
+<h4 id="第六章、-共享存储多处理器简介"><a href="#第六章、-共享存储多处理器简介" class="headerlink" title="第六章、 共享存储多处理器简介"></a>第六章、 共享存储多处理器简介</h4><ol>
+<li>事务串行化： 对于同一存储地址的多个操作，在所有处理器看来其顺序一致。比如，p1要对x写入1， p2要对x写入3. 如果没有事务串行化，p3,p4 对这两个写入的先后顺序可能有不同看法。<br>有可能p3认为p1先写入，则x的值为3. p4则相反，则两者看到的最后结果不一样</li>
+</ol>
+<h4 id="第七章、-缓存一致性基础"><a href="#第七章、-缓存一致性基础" class="headerlink" title="第七章、 缓存一致性基础"></a>第七章、 缓存一致性基础</h4><h6 id="组成一个共享存储多处理器系统的方式"><a href="#组成一个共享存储多处理器系统的方式" class="headerlink" title="组成一个共享存储多处理器系统的方式"></a>组成一个共享存储多处理器系统的方式</h6><p>当cache被所有处理器共享时，每个处理器可以直接访问缓存的任意一部分。这种组织方式的好处是不需要缓存一致性的支持，因为系统中只有一个缓存，<br>而他的缺点是处理器和cache需要部署在非常近的距离之内，否则访问缓存的时延会非常高。另外，互联网络必须提供很高的带宽，一位所有的存储器访问都必须通过互联网络。<br>从存储层次上看，互连网络离处理器越近，能被过滤的存储器访问越少，网络需要提供的宽带越大。因此，这种组织方式的可伸缩性较差，只适合于内核数很少的情况。<br>   <img src="/./pic_for_Multicore_Arch/multi_CPU_share_cache.png"><br>上图中的第二种组织方式通常被称为对称多处理器 (Symmetric Multiple Processors)。与共享缓存的方式相比，其有更好的可伸缩性，因为互连网络只需要承担被缓存过滤后的存储器访问流量，<br>并且对时延更不敏感。不过，在对称多处理器中编程会更加困难，因为需要处理缓存数据的局部性问题。</p>
+<h6 id="一致性缺失分为两种："><a href="#一致性缺失分为两种：" class="headerlink" title="一致性缺失分为两种："></a>一致性缺失分为两种：</h6><p>真共享和假共享缺失。真共享缺失是由多个线程共享相同的变量导致的， 并且他们会相互无效化。假共享缺失是由多个线程共享同一个缓存块中不同变量的不同字节导致的。<br>因为一致性粒度基于缓存块，所以当块之间没有时间共享时会相互无效化。 </p>
+<h6 id="预取和一致性缺失"><a href="#预取和一致性缺失" class="headerlink" title="预取和一致性缺失"></a>预取和一致性缺失</h6><p>预取会通过BusRd在总线上产生干扰。如果某时刻一个缓存拥有E 或者 M 状态的块，则他必须提供该块，并降级为S. 不幸的是，这会带来以下三类风险。</p>
+<ol>
+<li>预取块会导致缓存中一个当前的块被收回。</li>
+<li>预取的块可能会在该处理器使用前被偷。此风险随着更加激进的预取(即更早的预取)而变得更加严重。例如： 当接收到一个无效化请求，预取的块必须被无效化并重新预取。<br>   当处理器需要访问他时，依旧会遇到缓存缺失，这样，即使预测正确也没用。</li>
+<li>当该块被一个存储状态为E 或者M 的缓存提供时，如果提供者仍需要写入该块，写操作就会被延迟，因为他要在总线发出无效化请求。</li>
+</ol>
+<p>综上，如果预取的太早的话，会降低会降低处理器和预取的效率。</p>
+<h6 id="写无效和写更新"><a href="#写无效和写更新" class="headerlink" title="写无效和写更新"></a>写无效和写更新</h6><p>缓存一致性协议可以分为写无效和写更新。<br>写无效协议就是当一个处理器核要把对某一单元新写的值传播给其它处理器核时，使其它处理器核中该单元的备份无效，<br>这样当其它处理器核使用该备份时需要重新获得新值。<br>写更新协议就是当一个处理器核要把对某一单元新写的值传播给其它处理器核时，把拥有该备份的其它处理器核中的数据直接更新为新值。<br>写无效的优点是，一旦某处理器核使某一变量在所有拥有该备份的缓存中无效后，它就取得了对此变量的独占权，随后对此变量的更新不必再通知其它处理器核，直到其它处理器核请求访问此变量而导致独占权被取消；<br>缺点是，当某变量在一个处理器核中的备份无效后，此处理器核再访问该变量会引起cache miss，当一个共享块被多个处理器核频繁访问时会导致“乒乓”效应，导致性能严重下降。<br>写更新的优点是，一旦某cache缓存了某一个共享变量，它就会一直拥有此变量的最新备份；缺点是，当某一共享变量被更新时，所有拥有该变量的处理器核的备份都会被更新，哪怕这些处理器已经不需要这个变量了。<br>写无效协议适用于顺序共享（Sequential Sharing）的程序；写更新协议适用于紧密共享（Tight Sharing）的程序。</p>
+<h6 id="侦听-x2F-广播式和目录式"><a href="#侦听-x2F-广播式和目录式" class="headerlink" title="侦听&#x2F;广播式和目录式"></a>侦听&#x2F;广播式和目录式</h6><p>从传播给谁的角度看，在缓存一致性协议中，一致性消息可以被发送到所有缓存，也可以被发送到特定缓存。根据这种区别可以把一致性协议分为广播&#x2F;侦听式和基于目录式。<br>广播&#x2F;侦听式的原理就是当一个处理器核修改了cache line之后，将广播通知到总线上其他所有的核心，而所有核心需要一个硬件单元来负责侦听总线上的事务广播。<br>但是要时刻监听总线上的一切活动没有必要，所有处理器核之间共享的内存数据毕竟只占少数，大部分监听可以说是无用的，所以又引入了一个用于侦听过滤器（snoop filter）。<br>过滤的标准就是看自家的核心有没有缓存这个传输事务涉及到的内存位置，或者说有没有对应的cache line。广播&#x2F;侦听方式会占用比较大的总线带宽，尤其是处理器核心数目很多的时候。<br>基于目录式的原理是点对点的方式进行传播，每个总线事务只会发给相关的核心。所谓相关，就是拥有这个事务所涉及内存位置对应的cache line。<br>那怎么知道哪些核心是相关的呢？基于目录的主要思想是，为每一个cache line维护一个目录项，该目录项记录所有当前持有此备份的处理器核心号以及此行是否被改写等信息。<br>当一个处理器核写某一个cache line且可能引起数据不一致时，它就根据目录内容只向持有此备份的那些核心发出写使无效&#x2F;写更新信号，<br>从而避免了广播。典型的目录组织方式是位向量目录。位向量目录中的每一个目录项都有一个N位的向量，N是系统中的处理器核心数。位向量中的第i位为1表示第i个处理器核心持有该备份。<br>每一目录项还有一个改写位表示某核心独占并改写此行。相比广播&#x2F;侦听，目录式占用较少的总线带宽。但是目录式的缺点很明显，如果处理器核心多且共享存储容量大的时候，目录的存储开销非常大。另外，每次传输事务都要查询目录表项，也就造成了一些延迟。</p>
+<h4 id="第八章、-对同步的硬件支持"><a href="#第八章、-对同步的硬件支持" class="headerlink" title="第八章、 对同步的硬件支持"></a>第八章、 对同步的硬件支持</h4><h6 id="锁的实现"><a href="#锁的实现" class="headerlink" title="锁的实现"></a>锁的实现</h6><p>对锁实现性能的评估：</p>
+<ol>
+<li>无竞争获取锁的延迟：当线程间没有竞争时，获取一个锁所花费的时间。</li>
+<li>通信量</li>
+<li>公平性。公平性的标准是，在一个锁实现中， 线程饥饿的情况是否可能存在，即，一个线程不能够长时间地持有锁，即使这个锁在这段时间内是空闲的。</li>
+<li>存储。锁的实现所需要的存储空间。</li>
+</ol>
+<p>缓存一致性协议提供了原子性被保障的基础。举例来说，当遇到一个原子指令时，这个一致性协议知道需要保证其原子性。他首先会获得对存储单元M的”独家所有权” (将其他包含M的缓存块中的copy都置为无效).<br>当获得独家所有权之后，这个协议会确保只有一个处理器能够访问这个块，而如果其他处理器在此时想要访问的话，就会经历缓存缺失，接下来原子指令就可以执行了。<br>在原子指令持续期间，其他处理器不允许读或者写这个块。</p>
+<h6 id="TS锁"><a href="#TS锁" class="headerlink" title="TS锁"></a>TS锁</h6><p>test-and-set. 在获取锁的尝试中的第一条指令是test-and-set指令，它原子执行下面几个步骤： </p>
+<ol>
+<li>从lockvar所在的存储单元中读取值到寄存器R1中(使用一个独占读指令，如BusRdx or BusUpgr)</li>
+<li>将寄存器R1中的值和0相比较，如果是0，将1 写入lockvar(说明这是一次成功的锁的获取)。 如果R1中的值不是0，则不写入任何数。(失败的锁获取)</li>
+<li>第二条指令时branch, 当R1中的值非0 时，branch回到上面的第一步。</li>
+<li>锁的释放只需要将0赋给lockvar即可，而不需要原子指令。</li>
+</ol>
+<p>但是，这里显然的一个问题是， 假设，我们有p1,p2,p3, 同时想去获得锁，p1最终获得了。这时， p2,p3都会一直重复上面的1,2两个步骤，这样，p2, p3 不断发送BusRdx, 使得彼此的缓存块反复失效，而不得不反复获取。<br>这样，每一次获取锁的尝试总会触发一个总线事务，而不管这个锁目前是否被持有。所以，源码中出现的单个临界区的通信量会非常高，而这可能延迟锁的释放，使得通信量状态更加恶化。</p>
+<h6 id="TTSL"><a href="#TTSL" class="headerlink" title="TTSL"></a>TTSL</h6><p>test-and-test-and-set, 一种减少通信请求的方式：指定一种标准来检测一个锁获取请求是否会导致失败，如果可能导致失败，我们就推迟原子指令的执行。只有当一个获取锁的尝试有很大概率成功的时候，我们才去尝试执行原子指令。<br><img src="/./pic_for_Multicore_Arch/TS.png" title="TS的实现"></p>
+<p><img src="/./pic_for_Multicore_Arch/TTSL.png" title="TTSL的实现"><br>通过上面两个代码对比可以看出，TTSL多了一个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ld  R1, &amp;lockvar</span><br><span class="line">bnz R1, lock</span><br></pre></td></tr></table></figure>
+<p>从而，大大降低了 <code>t&amp;s</code> 运行的次数。从而减少了BusRdx的次数。<br>虽然TTSL 对于 TS 来说是一种进步，但是他的实现仍然存在很重大的缺陷。</p>
+<h6 id="LL-x2F-SC锁"><a href="#LL-x2F-SC锁" class="headerlink" title="LL&#x2F;SC锁"></a>LL&#x2F;SC锁</h6>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/27/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%B9%B6%E8%A1%8C%E5%A4%9A%E6%A0%B8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/" data-id="cl2ijblrq0000t0uxdrn2fww7" data-title="读书笔记 -- 并行多核体系结构基础" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/04/27/%E9%AA%8C%E8%AF%81%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">验证经验总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/27/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%B9%B6%E8%A1%8C%E5%A4%9A%E6%A0%B8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/">读书笔记 -- 并行多核体系结构基础</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/27/%E9%AA%8C%E8%AF%81%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">验证经验总结</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/18/shell-%E5%9F%BA%E7%A1%80/">shell_基础</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/15/regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE/">regex 正则表达</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/10/JSON-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">JSON 基本知识</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
