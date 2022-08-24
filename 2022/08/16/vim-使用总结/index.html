@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>vim 使用总结 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="vim alias 使用方法总结vimrcpart 1. 个人使用部分1234au BufNewFile,BufRead *.py,*.pyw setf pythonau BufNewFile,BufRead *.v,*.sv,*svi,*svh setf verilogsyntax enablesyntax on au: Autocommands are a way to tell Vim to">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim 使用总结">
+<meta property="og:url" content="http://example.com/2022/08/16/vim-%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="vim alias 使用方法总结vimrcpart 1. 个人使用部分1234au BufNewFile,BufRead *.py,*.pyw setf pythonau BufNewFile,BufRead *.v,*.sv,*svi,*svh setf verilogsyntax enablesyntax on au: Autocommands are a way to tell Vim to">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-16T21:48:43.000Z">
+<meta property="article:modified_time" content="2022-08-24T15:40:31.954Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-vim-使用总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/16/vim-%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" class="article-date">
+  <time class="dt-published" datetime="2022-08-16T21:48:43.000Z" itemprop="datePublished">2022-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      vim 使用总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="vim-alias-使用方法总结"><a href="#vim-alias-使用方法总结" class="headerlink" title="vim alias 使用方法总结"></a>vim alias 使用方法总结</h2><h3 id="vimrc"><a href="#vimrc" class="headerlink" title="vimrc"></a>vimrc</h3><h5 id="part-1-个人使用部分"><a href="#part-1-个人使用部分" class="headerlink" title="part 1. 个人使用部分"></a>part 1. 个人使用部分</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">au BufNewFile,BufRead *.py,*.pyw setf python</span><br><span class="line">au BufNewFile,BufRead *.v,*.sv,*svi,*svh setf verilog</span><br><span class="line">syntax enable</span><br><span class="line">syntax on</span><br></pre></td></tr></table></figure>
+<p>au: Autocommands are a way to tell Vim to run certain commands whenever certain events happen.<br>au BufNewFile,BufRead <em>.py,</em>.pyw setf python<br>         ^              ^         ^<br>         |              |         |<br>         |              |         The command to run.按照python的语法进行高亮<br>         |              |<br>         |              A “pattern” to filter the event.<br>         |<br>         The “event” to watch for.这两个分别是new, 和 read event. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">set hlsearch</span><br><span class="line">set incsearch</span><br><span class="line">set nowritebackup   &quot;no back up file when editing</span><br><span class="line">set noswapfile      &quot;no swap file</span><br><span class="line">set shiftwidth=2</span><br><span class="line">if has(&quot;mouse&quot;)</span><br><span class="line">  set mouse=a</span><br><span class="line">endif</span><br><span class="line">set pastetoggle=&lt;F2&gt;                   &quot; don&#x27;t format when pasting</span><br><span class="line"></span><br><span class="line">set tags=~/tags</span><br><span class="line"></span><br><span class="line">if has(&quot;autocmd&quot;)</span><br><span class="line">  &quot; In text files, always limit the width of text to 398 characters</span><br><span class="line">  autocmd BufRead *.txt set tw=400</span><br><span class="line">  &quot; When editing a file, always jump to the last cursor position</span><br><span class="line">&quot;  autocmd BufReadPost * if line(&quot;&#x27;\&quot;&quot;) | exe &quot;&#x27;\&quot;&quot; | endif</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">set cursorline // highlight the current line</span><br><span class="line">set colorcolumn=80 //在col 80处 highlight. </span><br><span class="line">set number //显示行号</span><br><span class="line">runtime macros/matchit.vim</span><br><span class="line">if has(&quot;gui_running&quot;)</span><br><span class="line">  if has(&quot;gui_gtk2&quot;)</span><br><span class="line">    set guifont=Inconsolata\ 12</span><br><span class="line">  elseif has(&quot;gui_macvim&quot;)</span><br><span class="line">    set guifont=Menlo\ Regular:h12</span><br><span class="line">  elseif has(&quot;gui_win32&quot;)</span><br><span class="line">    set guifont=Consolas:h12:cANSI</span><br><span class="line">  endif</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">set ignorecase    &quot;case-insensitive search</span><br><span class="line">set smartcase    &quot;but case sensitive when expression contains capital letters</span><br><span class="line">set nocompatible &quot; Use Vim defaults (much better!)</span><br><span class="line">set bs=2  &quot; allow backspacing over everything in insert mode</span><br><span class="line">set history=50  &quot; keep 50 lines of command line history</span><br><span class="line">set ruler  &quot; show the cursor position all the time</span><br><span class="line">set showmatch   &quot;将对应的&#123;&#125;高亮。不过gvim这个功能是自带的。</span><br><span class="line">set wrap        &quot;自动换行，不过貌似是自带的。如果没有的话，就是很长的一行，长出屏幕</span><br><span class="line">set ai   &quot; always set autoindenting on</span><br><span class="line">set si   &quot;smart indent</span><br></pre></td></tr></table></figure>
+<p>‘autoindent’    uses the indent from the previous line. <br>‘smartindent’   is like ‘autoindent’ but also recognizes some C syntax to<br>        increase&#x2F;reduce the indent where appropriate.</p>
+<p>A “soft” wrap is when your text editor just makes the text look like it has been wrapped at the edge of the screen, when in reality it’s just one very long line. This is pretty obvious when line numbers are turned on because there are multiple lines of text but the line number to the left doesn’t increase.</p>
+<p>A “hard” wrap is when your text editor is configured to actually insert a newline character \n at a predefined width. You wouldn’t want it at the edge of the window because that is pretty random.</p>
+<p><code>set wrap</code> “ enable soft wrapping at the edge of the screen</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set wildmenu    &quot;</span><br><span class="line">set wildmode=list:longest &quot;</span><br></pre></td></tr></table></figure>
+<p>First tab will complete to longest string and show the the match list, then second tab will complete to first full match and open the wildmenu.<br>ig: 在vim 中<br>:vsp lib&#x2F; 如果这个时候摁tab, 首先将其补全，假设lib 下分别有a, b, c, 三个dir, 则此时显示lib&#x2F;a. 然后，再摁一次tab, 这时候a, b, c都会列出来，然后我们可以直接选择。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot; Verilog indentation</span><br><span class="line">&quot;</span><br><span class="line">  au BufReadPost * if exists(&quot;b:current_syntax&quot;)</span><br><span class="line">  au BufReadPost *   if b:current_syntax == &quot;verilog&quot;</span><br><span class="line">  au BufReadPost *     let b:verilog_indent_modules = 1</span><br><span class="line">  au BufReadPost *     let b:verilog_indent_width = 4</span><br><span class="line">  au BufReadPost *     let b:verilog_indent_verbose = 1</span><br><span class="line">  au BufReadPost *   endif</span><br><span class="line">  au BufReadPost * endif</span><br><span class="line"></span><br><span class="line">&quot; Fixme_str </span><br><span class="line">let g:user_timestamp = &quot;(&quot;.$USER.&quot; &quot;.strftime(&quot;%m/%d/%y&quot;).&quot;):&quot;</span><br><span class="line">inoreabbrev &lt;expr&gt; tstamp       g:user_timestamp</span><br><span class="line">function! Fixme_str(msg, ...)</span><br><span class="line">    &quot; add msg + project info</span><br><span class="line">    let str = &quot;FIXME &quot;. a:msg . toupper($PROJECT)</span><br><span class="line"></span><br><span class="line">    &quot; add optional project version</span><br><span class="line">    if (a:0 != 0)</span><br><span class="line">        let str = str . &quot;_&quot; . a:1</span><br><span class="line">    endif</span><br><span class="line"></span><br><span class="line">    &quot; add user / timestamp info</span><br><span class="line">    let str = str . &quot; - &quot; . g:user_timestamp</span><br><span class="line">    return str</span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line">&quot;                    type this    get this</span><br><span class="line">inoreabbrev &lt;expr&gt;   CHECKIN      Fixme_str(&quot;CHECKIN &quot;) &quot;这里的是调用了上面的function </span><br><span class="line">&quot;Replace &lt;keys&gt; with the letter or letters which should be expanded to &lt;expansion&gt;, for example:</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">colorscheme desert</span><br><span class="line">set guifont=Courier_New:h12:cANSI</span><br><span class="line">set tabstop=4 //定义tab的长度是4个空格</span><br><span class="line">set expandtab //将tab 转为空格</span><br><span class="line">set autoindent //自动缩进</span><br><span class="line">set autoread  //当当前文件在外部被改动以后，当前文件自动更新。  </span><br><span class="line">set shiftwidth=4 //自动缩进的大小。比如，if()&#123;, 那么他的下一行会自动缩进2个空格。</span><br><span class="line">set viminfo=&#x27;1000,&lt;500</span><br></pre></td></tr></table></figure>
+
+<h5 id="part-2-网络中获取部分总结"><a href="#part-2-网络中获取部分总结" class="headerlink" title="part 2. 网络中获取部分总结"></a>part 2. 网络中获取部分总结</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot; fold/collapse, this is why indention is important</span><br><span class="line">:noremap &lt;c-d&gt; :set fdm=indent&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">&quot; Show Tab and trailing whitespace</span><br><span class="line">set list lcs=tab:&gt;-,trail:-  //lcs == listchars, 将tab 显示为 &gt;-, 尾部的space 为 -. </span><br><span class="line">:noremap &lt;F4&gt; :set nolist nonu&lt;CR&gt; //nolist, 取消上面， nonu, 取消行号</span><br></pre></td></tr></table></figure>
+<p>map: When I press this key, I want you to do this stuff instead of whatever you would normally do.<br><c-d> &#x3D;&gt; ctrl + d. <br>We used the map command which made the keys work in normal mode.  you may have noticed that the mappings also took effect in visual mode.<br>You can be more specific about when you want mappings to apply by using nmap, vmap, and imap. These tell Vim to only use the mapping in normal, visual, or insert mode respectively.</p>
+<p><code>set fdm</code> To activate folding in your text, you will need to set the ‘foldmethod’ option.<br>The ‘foldmethod’ option (abbreviated to ‘fdm’) is local to each window. It determines what kind of folding applies in the current window.<br>The command <code>zc</code> will close a fold (if the cursor is in an open fold), and <code>zo</code> will open a fold (if the cursor is in a closed fold). It’s easier to just use <code>za</code> which will toggle the current fold (close it if it was open, or open it if it was closed).</p>
+<p>noremap: Nonrecursive Mapping <br><code>:map x dd </code><br><code>:noremap \ x</code> <br>When you press \ Vim ignores the x mapping and does whatever it would do for x by default. Instead of deleting the current line, it deletes the current character.</p>
+<p><code>&lt;cr&gt;</code>: 相当于回车\</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot; Some p4 shortcuts</span><br><span class="line">let mapleader = &quot;\&lt;Space&gt;&quot;</span><br><span class="line">map &lt;leader&gt;ee :!sc edit %&lt;cr&gt; //% - current file name</span><br></pre></td></tr></table></figure>
+<p>Vim calls this “prefix” key the “leader”. You can set your leader key to whatever you like.<br>因此，这里的<code>&lt;leader&gt;ee</code>就相当于 <code>\&lt;Space&gt;ee</code><br>Why bother with setting <leader> at all, though? Why not just include your “prefix” key directly in your mapping commands? There are three good reasons.</p>
+<p>First of all, you may decide you need the normal function of your leader later on down the road. Defining it in one place makes it easy to change later.</p>
+<p>Second, when someone else is looking at your ~&#x2F;.vimrc file they’ll immediately know what you mean when you say <leader>. They can simply copy your mapping into their own ~&#x2F;.vimrc if they like it even if they use a different leader.</p>
+<p>Finally, many Vim plugins create mappings that start with <leader>. If you’ve already got it set up they’ll work properly and will feel familiar right out of the box.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let g:mapleader = &quot;\&lt;Space&gt;&quot;</span><br><span class="line"></span><br><span class="line">map &lt;leader&gt;rr :!p4 revert -a %&lt;cr&gt;  // :! 可以在vim中运行shell cmd. 比如 :!ls</span><br><span class="line">map &lt;leader&gt;dd :!setenv P4DIFF vimdiff; p4 diff %&lt;cr&gt;</span><br><span class="line"></span><br><span class="line">inoremap jk &lt;esc&gt; //用jk 代替esc</span><br></pre></td></tr></table></figure>
+<p>Abbreviations<br><code>:iabbrev adn and</code><br>Now enter insert mode and type:</p>
+<p><code>One adn two.</code><br>As soon as you hit space after typing the adn Vim will replace it with and.<br>所以这里可以用一个简短的命令代替一个固定的长串。</p>
+<p>更多的例子： </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:iabbrev @@    steve@stevelosh.com</span><br><span class="line">:iabbrev ccopy Copyright 2013 Steve Losh, all rights reserved.</span><br></pre></td></tr></table></figure>
+
+<p>更为复杂的例子：<br><code>:nnoremap &lt;leader&gt;&quot; viw&lt;esc&gt;a&quot;&lt;esc&gt;bi&quot;&lt;esc&gt;lel</code> <br>Now that’s an interesting mapping! First, go ahead and try it out. Enter normal mode, put your cursor over a word in your text and type <leader>“. Vim will surround the word in double quotes!</p>
+<p>How does this work? Let’s split it apart into pieces and think of what each one does:</p>
+<p><code>viw&lt;esc&gt;a&quot;&lt;esc&gt;bi&quot;&lt;esc&gt;lel</code><br>viw: visually select the current word<br><esc>: exit visual mode, which leaves the cursor on the last character of the word<br>a: enter insert mode after the current character<br>“: insert a “ into the text, because we’re in insert mode<br><esc>: return to normal mode<br>b: move back to the beginning of the word<br>i: enter insert mode before the current character<br>“: insert a “ into the text again<br><esc>: return to normal mode<br>l: move right, which puts our cursor on the first character of the word<br>e: move to the end of the word<br>l: move right, which puts our cursor over the ending quote\</p>
+<h2 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h2><p>alias [name [command]]<br>Assign name as the shorthand name, or alias, for command. If command is omitted, print the alias for name; if name also is omitted, print all aliases.<br>Aliases can be defined on the command line, but more often they are stored in .cshrc so that they take effect upon logging in.<br>Alias definitions can reference command-line arguments, much like the history list. Use <code>\!*</code> to refer to all command-line arguments, <code>\!^</code> for the first argument, <code>\!\!:2</code> for the second, <code>\!$</code> for the last, and so on.<br>An alias name can be any valid Unix command; however, you lose the original command’s meaning unless you type \name. <br>下面这些code line 应该放在.alias 文件中。<br><code>alias pe &quot;p4 edit&quot;</code><br><code>alias p4a   &#39;p4 annotate \!* &gt;! \!*.annotated; p4 filelog -l \!* &gt;&gt; \!*.annotated; vi \!*.annotated&#39;</code><br><code>alias fae &quot;find . -name \!* | xargs p4 edit&quot;</code><br>cmd &gt; file will write stdout to file if file does not exist <br>cmd &gt; file will fail if file exists <br>cmd &gt;&gt; file will append stdout to file if file exists <br>cmd &gt;&gt; file will fail if file does not exist <br>cmd &gt;! file will write stdout to file, overwriting any existing file <br>cmd &gt;&gt;! file will append stdout to file, creating the file if it does not already exist </p>
+<h2 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h2><p>这个命令真的很好用！！ 是个shell cmd. </p>
+<h2 id="4-vim中好用的几个命令"><a href="#4-vim中好用的几个命令" class="headerlink" title="4. vim中好用的几个命令"></a>4. vim中好用的几个命令</h2><h4 id="1-VIM-的代码提示功能"><a href="#1-VIM-的代码提示功能" class="headerlink" title="1. VIM 的代码提示功能"></a>1. VIM 的代码提示功能</h4><p>在编辑模式下 ，快捷键 Ctrl+n 或者 Ctrl+p 会有代码提示功能，我们可以实现快速录入的效果。</p>
+<h4 id="2-可视化模式下-v-的特殊操作"><a href="#2-可视化模式下-v-的特殊操作" class="headerlink" title="2.可视化模式下 v 的特殊操作"></a>2.可视化模式下 v 的特殊操作</h4><p>当操作的文本光标在 “”，‘’ ，（），{} ，[（双引号，单引号，小括号，大括号，中括号）<br>当中的时候,可以通过 va”选中 ”“ 内的所有内容包括双引号 ，vi” 选中 “” 内的所有内容，不包括 “”。va,vi 会快速选择区域，va 后面会紧跟一个区域结束标志，a 会选中结束符标志，i 就不会。</p>
+<h4 id="3-宏录制的录制操作"><a href="#3-宏录制的录制操作" class="headerlink" title="3.宏录制的录制操作"></a>3.宏录制的录制操作</h4><p>先将光标移动到第一行，在普通模式下按下 q 键（宏录制是 q 键启动的),在按一个 a （字母随意）,表示该宏注册为 a ，按下 I 在行首插入一个 tab 键，按下jj或者 <ESC>退出编辑模式,按下 j 将光标移动到下一行行首，最后按下 q 键完成录制操作（宏录制是 q 键结束的）。<br>总结上面例子的操作流程：<br>q → a → I → tab → jj → j → q <br>上面的例子成功地把在行首插入 tab 的功能录制了下来，那么如何应用到其他行呢？</p>
+<h4 id="4-宏录制的使用"><a href="#4-宏录制的使用" class="headerlink" title="4.宏录制的使用"></a>4.宏录制的使用</h4><p>上述的例子，在正常模式下，按 @a执行宏录制的一系列动作，将会在第二行执行插入 tab 。<br>@@ 是对上一次宏使用的重复操作。n@a 就会执行 n 次一系列的动作。使用宏录制可以一次执行一系列的操作，可以针对一些重复度较高的操作进行宏录制。</p>
+<h4 id="5-在当前行上移动光标"><a href="#5-在当前行上移动光标" class="headerlink" title="5. 在当前行上移动光标"></a>5. 在当前行上移动光标</h4><ol>
+<li><code>0</code> 移动到行头</li>
+<li><code>^</code> 移动到本行的第一个不是 blank 字符</li>
+<li><code>$</code> 移动到行尾<h4 id="6-跨行移动光标"><a href="#6-跨行移动光标" class="headerlink" title="6. 跨行移动光标"></a>6. 跨行移动光标</h4></li>
+<li><code>H</code> 光标定位到当前屏幕的第一行行首</li>
+<li><code>M</code> 光标移动到当前屏幕的中间</li>
+<li><code>L</code> 光标移动到当前屏幕的尾部<h4 id="7-Mark-标记"><a href="#7-Mark-标记" class="headerlink" title="7. Mark 标记"></a>7. Mark 标记</h4></li>
+<li>什么是 mark ? 我们通常在读一本很厚的书的时候，通常会加上一个书签，用来标记我们的进度，在 vim 当中也有一个类似的概念，我们也可以使用 vim 在我们的文件上打上一个标记，方便我们快速的跳到这个位置。</li>
+<li>如何使用 mark ? 按下键盘上的 m , 紧跟着在按下键盘上的（a-zA-Z）当中的任何一个字母，这样一个标记 （mark）例如 ma, mA 这样一个名字叫做 a 或者 A 的标记就建立起来了。<br>例如 :<br>ma<br>意思在当前文件的光标所在的行建立了一个标记，以后我们可以快速定位到这个位置。</li>
+<li>如何激活标记？<br>使用 ‘（单引号） 或者 <code>(常规键盘靠近数字键 1 左边的按键，我这里就做撇号) ，紧接着按下当初标记的那个字母就会跳到当初标记的那个位置。 例如 ：</code>a 和 ‘a</li>
+</ol>
+<h2 id="shell-命令"><a href="#shell-命令" class="headerlink" title="shell 命令"></a>shell 命令</h2><h4 id="1-命令行光标移动技巧"><a href="#1-命令行光标移动技巧" class="headerlink" title="1. 命令行光标移动技巧"></a>1. 命令行光标移动技巧</h4><blockquote>
+<p>Ctrl – a ：移到行首<br>Ctrl – e ：移到行尾<br>Ctrl – b ：往回(左)移动一个字符<br>Ctrl – f ：往后(右)移动一个字符<br>Alt – b ：往回(左)移动一个单词<br>Alt – f ：往后(右)移动一个单词<br>Ctrl – xx ：在命令行尾和光标之间移动</p>
+</blockquote>
+<h4 id="2-命令行编辑命令"><a href="#2-命令行编辑命令" class="headerlink" title="2. 命令行编辑命令"></a>2. 命令行编辑命令</h4><blockquote>
+<p>Ctrl - w: 从光标位置删除到行首 <br>Crtl - k: 从光标开始，删除到行尾。<br>Ctrl - y: 粘贴之前删除的内容到光标后 <br>Ctrl - r: 搜索历史命令，随着输入会显示历史命令中的一条匹配命令。enter执行。<br>Ctrl - g: 从历史搜索模式中退出.</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/16/vim-%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" data-id="cl77ry3um00001kuxayu5ba2r" data-title="vim 使用总结" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/04/27/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%B9%B6%E8%A1%8C%E5%A4%9A%E6%A0%B8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">读书笔记 -- 并行多核体系结构基础</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/16/vim-%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">vim 使用总结</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/27/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%B9%B6%E8%A1%8C%E5%A4%9A%E6%A0%B8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/">读书笔记 -- 并行多核体系结构基础</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/27/%E9%AA%8C%E8%AF%81%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">验证经验总结</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/18/shell-%E5%9F%BA%E7%A1%80/">shell_基础</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/15/regex-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE/">regex 正则表达</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
